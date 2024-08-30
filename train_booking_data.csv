@@ -1,0 +1,21 @@
+Booking ID,User Age,Preferred Age Group,Seat Number,Row,Column,Seat Type,Seat Booked (Y/N)
+1,23,18-25,12,2,3,Aisle,Y
+2,34,25-40,15,3,2,Window,Y
+3,45,40-60,20,4,3,Aisle,N
+4,62,60+,9,2,0,Aisle,Y
+5,29,25-40,18,4,1,Middle,Y
+6,40,40-60,24,5,3,Aisle,Y
+7,58,60+,16,3,3,Window,N
+8,31,25-40,7,1,2,Middle,Y
+9,22,18-25,5,1,0,Aisle,Y
+10,38,25-40,2,0,1,Middle,Y
+11,27,18-25,11,2,2,Window,Y
+12,50,40-60,13,4,1,Middle,N
+13,41,40-60,19,4,2,Aisle,Y
+14,63,60+,8,1,3,Aisle,N
+15,36,25-40,14,3,1,Window,Y
+16,52,40-60,22,5,1,Middle,Y
+17,29,25-40,3,0,2,Aisle,Y
+18,47,40-60,25,6,0,Window,N
+19,61,60+,6,1,1,Middle,Y
+20,33,25-40,4,0,3,Aisle,Y

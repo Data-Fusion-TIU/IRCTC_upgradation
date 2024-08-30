@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>IRCTC</title>
+</head>
+<body>
+    <div id="main">
+        <div id="nav-bar">
+            <img src="/static/images/IRCTC-Color.png" height="80" alt="logo">
+            <div id="nav-ele">
+                <ul>
+                    <li>Home</li>
+                    <li>Agent Login</li>
+                    <li>Daily Deals</li>
+                    <li>Contact Us</li>
+                </ul>
+                <button class="btn" onclick="openLoginPage()">Login</button>
+                <button class="btn">Register</button>
+            </div>
+        </div>
+        <div id="page1">
+            <div class="booking-form">
+                <h2>Train Ticket Booking</h2>
+                <form id="ticketForm">
+                    <div class="form-group">
+                        <label for="from">From:</label>
+                        <input type="text" id="from" name="from" placeholder="Enter departure station" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="to">To:</label>
+                        <input type="text" id="to" name="to" placeholder="Enter destination station" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="travelDate">Travel Date:</label>
+                        <input type="date" id="travelDate" name="travelDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingType">Booking Type:</label>
+                        <select id="bookingType" name="bookingType" required>
+                            <option value="normal">Normal</option>
+                            <option value="tatkal">Tatkal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="classType">Class:</label>
+                        <select id="classType" name="classType" required>
+                            <option value="1st class">1st Class</option>
+                            <option value="2nd class">2nd Class</option>
+                            <option value="3rd class">3rd Class</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Ticket</button>
+                </form>
+            </div>
+            <!-- <img src="train background.jpg" height="700" alt=""> -->
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

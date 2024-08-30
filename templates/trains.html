@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Search Results</title>
+    <link rel="stylesheet" href="/static/css/train.css">
+</head>
+<body>
+    <div class="container">
+        <div class="filter-panel">
+            <h3>Refine Results</h3>
+            <button class="reset-filters">Reset Filters</button>
+
+            <div class="filter-section">
+                <h4>Journey Class</h4>
+                <label><input type="checkbox" checked> AC First Class (1A)</label>
+                <label><input type="checkbox" checked> AC 2 Tier (2A)</label>
+                <label><input type="checkbox" checked> AC 3 Tier (3A)</label>
+                <label><input type="checkbox" checked> AC 3 Economy (3E)</label>
+                <label><input type="checkbox" checked> Sleeper (SL)</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Train Type</h4>
+                <label><input type="checkbox" checked> Duronto</label>
+                <label><input type="checkbox" checked> Other</label>
+                <label><input type="checkbox" checked> Special</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Departure Time</h4>
+                <button>00:00 - 06:00 Early Morning</button>
+                <button>06:00 - 12:00 Morning</button>
+            </div>
+        </div>
+
+        <div class="result-panel">
+            <div class="result-header">
+                <h2>5 Results for HOWRAH JN ➔ MUMBAI CENTRAL | Tue, 27 Aug 2024</h2>
+                <div class="sort-options">
+                    <button>Sort By Duration</button>
+                    <button>Show Available Trains</button>
+                </div>
+            </div>
+
+            <div class="result-card" data-train-id="12262">
+                <h3>CSMT DURONTO EX (12262)</h3>
+                <p>Runs On: M T W T F S S</p>
+                <div class="train-timing">
+                    <div>
+                        <strong>05:45</strong> | HOWRAH JN | Tue, 27 Aug
+                    </div>
+                    <div>
+                        <strong>08:15</strong> | C SHIVAJI MAH T | Wed, 28 Aug
+                    </div>
+                </div>
+                <div class="train-classes">
+                    <span data-class="1A">AC First Class (1A): <span class="seats">10</span> seats</span>
+                    <span data-class="2A">AC 2 Tier (2A): <span class="seats">15</span> seats</span>
+                    <span data-class="3A">AC 3 Tier (3A): <span class="seats">20</span> seats</span>
+                </div>
+                <button class="book-now">Book Now</button>
+                <button class="other-dates">Other Dates</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/static/js/train.js"></script>
+</body>
+</html>
