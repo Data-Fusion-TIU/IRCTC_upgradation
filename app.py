@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+
 app = Flask(__name__)
+
+
 
 @app.route('/')
 def home():
@@ -14,7 +18,7 @@ def train_selection():
 def login_page():
     return render_template('login.html')
 
-@app.route('/details', methods=['GET', 'POST'])
+@app.route('/passenger_details', methods=['GET', 'POST'])
 def details():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -32,7 +36,7 @@ def details():
         print(f"Preferred Age Group: {age_group}")
         return render_template('book.html', name=name)
 
-    return render_template('details.html')
+    return render_template('passenger_details.html')
 
 @app.route('/book')
 def seat_arrangement():

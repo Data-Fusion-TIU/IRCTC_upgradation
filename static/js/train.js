@@ -1,5 +1,5 @@
 // Example: Accessing seat availability and updating dynamically
-
+/*
 document.addEventListener('DOMContentLoaded', function() {
     const resultCards = document.querySelectorAll('.result-card');
 
@@ -16,16 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Example: Updating seat availability on click (for demonstration)
         card.querySelector('.book-now').addEventListener('click', () => {
-            seatElements.forEach(seatElement => {
-                let seats = parseInt(seatElement.textContent, 10);
-                if (seats > 0) {
-                    seats--; // Decrease seats by 1
-                    seatElement.textContent = seats;
-                    console.log(`Seats updated: Train ${trainId} - Class ${seatElement.parentElement.dataset.class} now has ${seats} seats available.`);
-                } else {
-                    console.log(`No seats available for Train ${trainId} - Class ${seatElement.parentElement.dataset.class}`);
-                }
-            });
+            window.location.href = 'login';
         });
     });
-});
+});*/
+
+function gotologin(){
+    window.location.href = 'passenger_details';
+}
