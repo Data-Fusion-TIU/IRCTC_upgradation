@@ -3,44 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Train Coach Seat Selection</title>
-    <link rel="stylesheet" href="/static/css/seating.css">
+    <title>Seating Arrangement</title>
+    <style>
+        .seating-chart {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-gap: 10px;
+            max-width: 300px;
+            margin: auto;
+        }
+        .seat {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .seat.booked {
+            background-color: red;
+            color: white;
+        }
+        .seat.available {
+            background-color: lightgreen;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Train Coach Seat Selection</h1>
-        <div class="coach">
-            <div class="coach-header">Coach A</div>
-            <div class="seats">
-                <div class="row">
-                    <span class="seat available" data-seat="1A"></span>
-                    <span class="seat available" data-seat="1B"></span>
-                    <span class="seat available" data-seat="1C"></span>
-                    <span class="seat available" data-seat="1D"></span>
-                </div>
-                <div class="row">
-                    <span class="seat available" data-seat="2A"></span>
-                    <span class="seat available" data-seat="2B"></span>
-                    <span class="seat available" data-seat="2C"></span>
-                    <span class="seat available" data-seat="2D"></span>
-                </div>
-                <div class="row">
-                    <span class="seat available" data-seat="3A"></span>
-                    <span class="seat available" data-seat="3B"></span>
-                    <span class="seat available" data-seat="3C"></span>
-                    <span class="seat available" data-seat="3D"></span>
-                </div>
+    <h1>Seating Arrangement</h1>
+    <div class="seating-chart">
+        {% for seat in seats %}
+            <div class="seat {{ 'booked' if seat.is_booked else 'available' }}">
+                {{ seat.seat_number }}
             </div>
-        </div>
-        <div class="legend">
-            <h3>Legend</h3>
-            <p><span class="seat available"></span> Available</p>
-            <p><span class="seat selected"></span> Selected</p>
-            <p><span class="seat reserved"></span> Reserved</p>
-        </div>
-        <button id="submit-seats">Submit Selection</button>
+        {% endfor %}
     </div>
-
-    <script src="/static/js/seating.js"></script>
 </body>
 </html>

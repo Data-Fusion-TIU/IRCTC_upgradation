@@ -1,63 +1,435 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>IRCTC</title>
-</head>
-<body>
-    <div id="main">
-        <div id="nav-bar">
-            <img src="IRCTC-Color.png" height="80" alt="logo">
-            <div id="nav-ele">
-                <ul>
-                    <li>Home</li>
-                    <li>Agent Login</li>
-                    <li>Daily Deals</li>
-                    <li>Contact Us</li>
-                </ul>
-                <button class="btn" onclick="openLoginPage()">Login</button>
-                <button class="btn">Register</button>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>Galileo Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eef4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d151c]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_535)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
             </div>
-        </div>
-        <div id="page1">
-            <div class="booking-form">
-                <h2>Train Ticket Booking</h2>
-                <form id="ticketForm">
-                    <div class="form-group">
-                        <label for="from">From:</label>
-                        <input type="text" id="from" name="from" placeholder="Enter departure station" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="to">To:</label>
-                        <input type="text" id="to" name="to" placeholder="Enter destination station" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="travelDate">Travel Date:</label>
-                        <input type="date" id="travelDate" name="travelDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingType">Booking Type:</label>
-                        <select id="bookingType" name="bookingType" required>
-                            <option value="normal">Normal</option>
-                            <option value="tatkal">Tatkal</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="classType">Class:</label>
-                        <select id="classType" name="classType" required>
-                            <option value="1st class">1st Class</option>
-                            <option value="2nd class">2nd Class</option>
-                            <option value="3rd class">3rd Class</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="submit-btn">Book Ticket</button>
-                </form>
+            <h2 class="text-[#0d151c] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#0d151c] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d151c] text-sm font-medium leading-normal" href="#">Agent Login</a>
+              <a class="text-[#0d151c] text-sm font-medium leading-normal" href="#">Daily Deals</a>
+              <a class="text-[#0d151c] text-sm font-medium leading-normal" href="#">Contact Us</a>
             </div>
-            <!-- <img src="train background.jpg" height="700" alt=""> -->
+            <div class="flex gap-2">
+              <button
+                class="register flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#2094f3] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Register</span>
+              </button>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#e7eef4] text-[#0d151c] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Sign in</span>
+              </button>
+            </div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col flex-1">
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
+                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://cdn.usegalileo.ai/stability/20493614-c64f-42cc-b097-01434da3b9cb.png");'
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Book Train Tickets
+                    </h1>
+                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                      Use IRCTC's online reservation system to book your train tickets
+                    </h2>
+                  </div>
+                  <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
+                    <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+                      <div
+                        class="text-[#49779c] flex border border-[#cedde8] bg-slate-50 items-center justify-center pl-[15px] rounded-l-xl border-r-0"
+                        data-icon="MagnifyingGlass"
+                        data-size="20px"
+                        data-weight="regular"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                          <path
+                            d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <input
+                        placeholder="Enter city pair or use guidence"
+                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d151c] focus:outline-0 focus:ring-0 border border-[#cedde8] bg-slate-50 focus:border-[#cedde8] h-full placeholder:text-[#49779c] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                        value=""
+                      />
+                      <div class="flex items-center justify-center rounded-r-xl border-l-0 border border-[#cedde8] bg-slate-50 pr-[7px]">
+                        <button
+                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#2094f3] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                        >
+                          <span class="truncate">Search</span>
+                        </button>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c] whitespace-nowrap" data-icon="OutlineTicket" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16">
+                    <rect x="36" y="64" width="184" height="128" rx="16" ry="16"></rect>
+                    <path d="M60,128a28,28,0,0,1,56,0a28,28,0,0,1-56,0"></path>
+                    <line x1="92" y1="136" x2="92" y2="120"></line>
+                    <line x1="156" y1="128" x2="220" y2="128"></line>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight whitespace-nowrap">Ticket Booking</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="Clock" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Tatkal Booking</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="MapPin" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">PNR Status</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="CreditCard" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Cancel Ticket</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="Money" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152ZM240,56H16a8,8,0,0,0-8,8V192a8,8,0,0,0,8,8H240a8,8,0,0,0,8-8V64A8,8,0,0,0,240,56ZM193.65,184H62.35A56.78,56.78,0,0,0,24,145.65v-35.3A56.78,56.78,0,0,0,62.35,72h131.3A56.78,56.78,0,0,0,232,110.35v35.3A56.78,56.78,0,0,0,193.65,184ZM232,93.37A40.81,40.81,0,0,1,210.63,72H232ZM45.37,72A40.81,40.81,0,0,1,24,93.37V72ZM24,162.63A40.81,40.81,0,0,1,45.37,184H24ZM210.63,184A40.81,40.81,0,0,1,232,162.63V184Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Refund</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="Truck" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M247.42,117l-14-35A15.93,15.93,0,0,0,218.58,72H184V64a8,8,0,0,0-8-8H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H41a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,247.42,117ZM184,88h34.58l9.6,24H184ZM24,72H168v64H24ZM72,208a16,16,0,1,1,16-16A16,16,0,0,1,72,208Zm81-24H103a32,32,0,0,0-62,0H24V152H168v12.31A32.11,32.11,0,0,0,153,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,184,208Zm48-24H215a32.06,32.06,0,0,0-31-24V128h48Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Luggage</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="ShieldCheck" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Safety</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="UsersThree" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">Divyangjan</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="Question" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">FAQ</h2>
+              </div>
+              <div class="flex flex-1 gap-3 rounded-lg cursor-pointer border border-[#cedde8] bg-slate-50 p-4 items-center">
+                <div class="text-[#0d151c]" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                  </svg>
+                </div>
+                <h2 class="text-[#0d151c] text-base font-bold leading-tight">More Services</h2>
+              </div>
+            </div>
+            <!-- ----------------------------------------------------------------------------------------------------------------------- -->
+            <h2 class="text-[#1b0e0e] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Popular Trains</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/99ea5b06-3a49-4601-ab6b-083eb0eedc4d.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Rajdhani Express</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/8d58f8da-afb5-4fa1-be08-0cdc00e563a0.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Duronto Express</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/05d44472-93d3-4344-a4c9-ee5d5ac6fe0a.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Shatabdi Express</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0349ba6b-3b9b-445c-a7da-d4f32d0beb92.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Garib Rath</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/d858303b-bbd0-4c87-8d3b-4c57f2a41f4d.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Jan Shatabdi Express</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0640b2cc-3509-4ed0-9fb2-7194feb09a1c.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Double Decker Express</p>
+              </div>
+            </div>
+            <h2 class="text-[#1b0e0e] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Trending Destinations</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/d6f41ad6-0972-4f03-9a15-f7c0e0ced8be.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Delhi</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/stability/d5eb70c5-d7ee-4e5f-8149-8c80668993e5.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Mumbai</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/c6c3b2ed-be05-457e-a527-244a86d7c5e2.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Chennai</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/773418cb-ad1a-4eec-8707-facb3ad72f0e.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Bangalore</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/2377f4dc-d92b-446e-93cb-fe980fffee98.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Kolkata</p>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/stability/e1543001-cbd2-45d7-b863-86e7303190e4.png");'
+                ></div>
+                <p class="text-[#1b0e0e] text-base font-medium leading-normal">Jaipur</p>
+              </div>
+            </div>
+             <!-- ------------------------------------------------------------------------------------------------------------------------- -->
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/stability/b251ac40-e610-4e3c-af99-af1f4f34c40a.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC SBI Credit Card</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">5% value back on AC1, AC2, AC3, AC CC bookings on IRCTC website</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Apply Now &gt;</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/431b6ee2-11cb-4515-8565-7378eb824e43.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC Loyalty Program</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Earn points on every rupee spent on IRCTC for AC1, AC2, AC3, AC CC bookings</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/9e3959e1-5b57-4558-afd1-a01f99dfab64.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">Travel Insurance</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Insure your journey at a nominal cost</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/be56366d-3ff8-46ea-a4fa-3af6358699cb.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC Tourism</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Explore the world with IRCTC</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/4ff8ab8c-ea49-4759-a654-c1cb4f72c903.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC eWallet</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Pay for your tickets using IRCTC eWallet</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/b02b9450-39b2-4583-857c-e80397a8746c.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC Air</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Book domestic and international flights</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 pb-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/996142ca-2228-47d3-9763-8e6ac614985c.png");'
+                ></div>
+                <div>
+                  <p class="text-[#0d151c] text-base font-medium leading-normal">IRCTC Food</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Order delicious food on the go</p>
+                  <p class="text-[#49779c] text-sm font-normal leading-normal">Know More &gt;</p>
+                </div>
+              </div>
+            </div>
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+                <a class="text-[#49779c] text-base font-normal leading-normal min-w-40" href="#">About Us</a>
+                <a class="text-[#49779c] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+                <a class="text-[#49779c] text-base font-normal leading-normal min-w-40" href="#">Terms &amp; Conditions</a>
+                <a class="text-[#49779c] text-base font-normal leading-normal min-w-40" href="#">Careers</a>
+              </div>
+              <div class="flex flex-wrap justify-center gap-4">
+                <a href="#">
+                  <div class="text-[#49779c]" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="#">
+                  <div class="text-[#49779c]" data-icon="TwitterLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="#">
+                  <div class="text-[#49779c]" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="#">
+                  <div class="text-[#49779c]" data-icon="YoutubeLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <p class="text-[#49779c] text-base font-normal leading-normal">© 2022 IRCTC. All rights reserved.</p>
+            </footer>
+          </div>
         </div>
+      </div>
     </div>
-    <script src="/static/js/script.js"></script>
-</body>
+    <script src="/static/js/index.js"></script>
+  </body>
 </html>
