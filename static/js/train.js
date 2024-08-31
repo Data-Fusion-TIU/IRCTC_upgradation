@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });*/
 
 function gotologin(){
-    window.location.href = 'passenger_details';
+    window.location.href = 'book';
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Booking Form</title>
+    <link rel="stylesheet" href="/static/css/train.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Panel: Journey Details -->
+        <div class="filter-panel">
+            <h3>Journey Details</h3>
+            <div class="filter-section">
+                <h4>HOWRAH JN ➔ MUMBAI CENTRAL</h4>
+                <p>Train: CSMT DURONTO EX (12262)</p>
+                <p>Date: Tue, 27 Aug 2024</p>
+                <p>Departure: 05:45 | HOWRAH JN</p>
+                <p>Arrival: 08:15 | C SHIVAJI MAH T</p>
+                <h4>Selected Class:</h4>
+                <p>AC First Class (1A): 10 seats available</p>
+            </div>
+        </div>
+
+        <!-- Right Panel: Booking Form -->
+        <div class="result-panel">
+            <h2>Passenger Details</h2>
+            <form action="/confirmation" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Passenger Age Group:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="age_group" value="18-25" required> 18-25</label>
+                        <label><input type="radio" name="age_group" value="25-40" required> 25-40</label>
+                        <label><input type="radio" name="age_group" value="40-60" required> 40-60</label>
+                        <label><input type="radio" name="age_group" value="60+" required> 60+</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Book Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/train.js"></script>
+</body>
+
+</html>
