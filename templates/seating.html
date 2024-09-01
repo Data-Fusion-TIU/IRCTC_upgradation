@@ -6,38 +6,61 @@
     <title>Seating Arrangement</title>
     <style>
         .seating-chart {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            grid-gap: 10px;
-            max-width: 300px;
-            margin: auto;
-        }
-        .seat {
-            width: 50px;
-            height: 50px;
-            border: 1px solid #ddd;
             display: flex;
+            flex-direction: column;
             align-items: center;
+            margin-top: 20px;
+        }
+
+        .row {
+            display: flex;
             justify-content: center;
-            font-size: 14px;
+            margin-bottom: 20px; /* Increase space between rows */
+        }
+
+        .seat {
+            width: 50px; /* Increase seat size if needed */
+            height: 50px; /* Increase seat size if needed */
+            text-align: center;
+            vertical-align: middle;
+            background-size: contain; /* Fit the image within the block */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Do not repeat image */
+            border: 0px;
             cursor: pointer;
+            margin: 5px; /* Add space between seats */
         }
-        .seat.booked {
-            background-color: red;
-            color: white;
-        }
+
         .seat.available {
-            background-color: lightgreen;
+            background-image: url('/static/images/available\ seats.png'); /* URL for available chair */
+        }
+
+        .seat.booked {
+            background-image: url('/static/images/booked\ seats.png'); /* URL for booked chair */
+        }
+
+        .empty {
+            width: 40px; /* Increase width of middle space */
+            height: 50px; /* Match height of seats */
+            background-color: transparent;
+            border: none;
         }
     </style>
 </head>
 <body>
     <h1>Seating Arrangement</h1>
     <div class="seating-chart">
-        {% for seat in seats %}
-            <div class="seat {{ 'booked' if seat.is_booked else 'available' }}">
-                {{ seat.seat_number }}
-            </div>
+        {% for row in range(1, 18) %} <!-- Loop through 17 rows -->
+        <div class="row">
+            {% for seat in range(1, 7) %}
+                {% if seat == 4 %}
+                <div class="empty"></div> <!-- Middle walk space -->
+                {% endif %}
+                <div class="seat {% if seats_dict.get((row-1)*6 + seat) %}booked{% else %}available{% endif %}">
+                    {{ (row-1)*6 + seat }}
+                </div>
+            {% endfor %}
+        </div>
         {% endfor %}
     </div>
 </body>

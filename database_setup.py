@@ -22,6 +22,7 @@ def import_data():
                 row=row['Row'],         # Make sure your Excel file has a 'Row' column
                 column=row['Column'],   # Make sure your Excel file has a 'Column' column
                 seat_type=row['Seat Type'],
+                is_booked=row['Seat Booked'] 
             )
             db.session.add(seat)
         

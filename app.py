@@ -14,7 +14,18 @@ class Seat(db.Model):
     row = db.Column(db.Integer, nullable=False)
     column = db.Column(db.Integer, nullable=False)
     seat_type = db.Column(db.String(20), nullable=False)
+    is_booked = db.Column(db.Boolean, default=False)  # New attribute to track booking status
 
+@app.route('/seating')
+def seating():
+    seats = Seat.query.all()
+    seats_dict = {seat.seat_number: (seat.user_age is not None) for seat in seats}
+
+    total_seats = len(seats_dict)
+    seats_per_row = 6  # 3 + 1 + 2 configuration
+    total_rows = (total_seats + seats_per_row - 1) // seats_per_row
+
+    return render_template('seating.html', seats_dict=seats_dict, total_rows=total_rows)
 
 
 @app.route('/')
