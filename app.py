@@ -16,17 +16,6 @@ class Seat(db.Model):
     seat_type = db.Column(db.String(20), nullable=False)
     is_booked = db.Column(db.Boolean, default=False)  # New attribute to track booking status
 
-@app.route('/seating')
-def seating():
-    seats = Seat.query.all()
-    seats_dict = {seat.seat_number: (seat.user_age is not None) for seat in seats}
-
-    total_seats = len(seats_dict)
-    seats_per_row = 6  # 3 + 1 + 2 configuration
-    total_rows = (total_seats + seats_per_row - 1) // seats_per_row
-
-    return render_template('seating.html', seats_dict=seats_dict, total_rows=total_rows)
-
 
 @app.route('/')
 def home():
@@ -47,23 +36,36 @@ def booking():
     return render_template('booking.html')
 
 
-@app.route('/confirmation', methods=['POST'])
-def confirmation():
+#@app.route('/confirmation', methods=['POST'])
+#def confirmation():
     # Retrieve form data
-    name = request.form['name']
+#    full_name = request.form['full_name']
+#    age = request.form['age']
+#    gender = request.form['gender']
+#    email = request.form['email']
+#    phone = request.form['phone']
+#    preferred_age_group = request.form['preferred_age_group']
+    
+    # Pass the form data to the confirmation page
+#    return render_template('confirmation.html', name=full_name, phone=phone, age=age, gender=gender, age_group=preferred_age_group)
+
+@app.route('/seat', methods=['POST'])
+def seat():
+    seats = Seat.query.all()
+    seats_dict = {seat.seat_number: (seat.user_age is not None) for seat in seats}
+
+    total_seats = len(seats_dict)
+    seats_per_row = 6  # 3 + 1 + 2 configuration
+    total_rows = (total_seats + seats_per_row - 1) // seats_per_row
+    name = request.form['full name']
     phone = request.form['phone']
     age = request.form['age']
     gender = request.form['gender']
     age_group = request.form['age_group']
     
     # Pass the form data to the confirmation page
-    return render_template('confirmation.html', name=name, phone=phone, age=age, gender=gender, age_group=age_group)
+    return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group)
 
-@app.route('/seat')
-def seat():
-    # available_seats = Seat.query.filter_by(is_booked=False).all()
-    # seats = Seat.query.all()  # Fetch all seats
-    return render_template('seat.html')
 
 @app.route('/signup')
 def signup():

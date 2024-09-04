@@ -8,8 +8,55 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
-    <title>Galileo Design</title>
+    <title>Choose your seat</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <style>
+        .seating-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .row-block {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px; /* Adjust space between blocks */
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Increase space between rows */
+        }
+
+        .seat {
+            width: 50px; /* Increase seat size if needed */
+            height: 50px; /* Increase seat size if needed */
+            text-align: center;
+            vertical-align: middle;
+            background-size: contain; /* Fit the image within the block */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Do not repeat image */
+            border: 0px;
+            cursor: pointer;
+            margin: 5px; /* Add space between seats */
+        }
+
+        .seat.available {
+            background-image: url('/static/images/available\ seats.png'); /* URL for available chair */
+        }
+
+        .seat.booked {
+            background-image: url('/static/images/booked\ seats.png'); /* URL for booked chair */
+        }
+
+        .empty {
+            width: 40px; /* Increase width of middle space */
+            height: 50px; /* Match height of seats */
+            background-color: transparent;
+            border: none;
+        }
+    </style>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   </head>
@@ -54,278 +101,24 @@
           </div>
         </header>
 
-        <!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col flex-1 max-w-80">
-
-            <p class="text-4xl font-extrabold mb-4 text-center font-serif">Engine</p>
-
-            <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-                <div>
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="p-2 bg-white border rounded">LB</div>
-                        <div class="p-2 bg-white border rounded">MB</div>
-                        <div class="p-2 bg-white border rounded">UB</div>
-                    </div>
-                    <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                        <div class="p-2 bg-white border rounded">LB</div>
-                        <div class="p-2 bg-white border rounded">MB</div>
-                        <div class="p-2 bg-white border rounded">UB</div>
-                    </div>
-                </div>
-                <div class="space-x-1 > * + *">
-                    <div class="grid grid-cols-2 gap-2 text-center">
-                        <div class="p-2 bg-white border rounded">SL</div>
-                        <div class="p-2 bg-white border rounded">SU</div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                        <div class="p-2 bg-white border rounded">SL</div>
-                        <div class="p-2 bg-white border rounded">SU</div>
-                    </div>
-                    
-                </div>
-                
-            </div>
-
-            
-               
-                <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-                    <div>
-                        <div class="grid grid-cols-4 gap-2 text-center">
-                            <div class="p-2 bg-white border rounded">LB</div>
-                            <div class="p-2 bg-white border rounded">MB</div>
-                            <div class="p-2 bg-white border rounded">UB</div>
+        <div class="seating-chart">
+            {% for block in range(1, 5) %} <!-- Loop through 4 blocks of 2 rows each -->
+            <div class="row-block">
+                {% for row in range(1, 3) %} <!-- Each block contains 2 rows -->
+                <div class="row">
+                    {% for seat in range(1, 7) %}
+                        {% if seat == 4 %}
+                        <div class="empty"></div> <!-- Middle walk space -->
+                        {% endif %}
+                        <div class="seat {% if seats_dict.get((block-1)*12 + (row-1)*6 + seat) %}booked{% else %}available{% endif %}">
+                            {{ (block-1)*12 + (row-1)*6 + seat }}
                         </div>
-                        <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                            <div class="p-2 bg-white border rounded">LB</div>
-                            <div class="p-2 bg-white border rounded">MB</div>
-                            <div class="p-2 bg-white border rounded">UB</div>
-                        </div>
-                    </div>
-                    <div class="space-x-1 > * + *">
-                        <div class="grid grid-cols-2 gap-2 text-center">
-                            <div class="p-2 bg-white border rounded">SL</div>
-                            <div class="p-2 bg-white border rounded">SU</div>
-                        </div>
-    
-                        <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                            <div class="p-2 bg-white border rounded">SL</div>
-                            <div class="p-2 bg-white border rounded">SU</div>
-                        </div>
-                        
-                    </div>
-                    
+                    {% endfor %}
                 </div>
-
-                <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-                  <div>
-                      <div class="grid grid-cols-4 gap-2 text-center">
-                          <div class="p-2 bg-white border rounded">LB</div>
-                          <div class="p-2 bg-white border rounded">MB</div>
-                          <div class="p-2 bg-white border rounded">UB</div>
-                      </div>
-                      <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                          <div class="p-2 bg-white border rounded">LB</div>
-                          <div class="p-2 bg-white border rounded">MB</div>
-                          <div class="p-2 bg-white border rounded">UB</div>
-                      </div>
-                  </div>
-                  <div class="space-x-1 > * + *">
-                      <div class="grid grid-cols-2 gap-2 text-center">
-                          <div class="p-2 bg-white border rounded">SL</div>
-                          <div class="p-2 bg-white border rounded">SU</div>
-                      </div>
-  
-                      <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                          <div class="p-2 bg-white border rounded">SL</div>
-                          <div class="p-2 bg-white border rounded">SU</div>
-                      </div>
-                      
-                  </div>
-                  
-              </div>
-
-              <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-                <div>
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="p-2 bg-white border rounded">LB</div>
-                        <div class="p-2 bg-white border rounded">MB</div>
-                        <div class="p-2 bg-white border rounded">UB</div>
-                    </div>
-                    <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                        <div class="p-2 bg-white border rounded">LB</div>
-                        <div class="p-2 bg-white border rounded">MB</div>
-                        <div class="p-2 bg-white border rounded">UB</div>
-                    </div>
-                </div>
-                <div class="space-x-1 > * + *">
-                    <div class="grid grid-cols-2 gap-2 text-center">
-                        <div class="p-2 bg-white border rounded">SL</div>
-                        <div class="p-2 bg-white border rounded">SU</div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                        <div class="p-2 bg-white border rounded">SL</div>
-                        <div class="p-2 bg-white border rounded">SU</div>
-                    </div>
-                    
-                </div>
-                
+                {% endfor %}
             </div>
-
-
-            <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-              <div>
-                  <div class="grid grid-cols-4 gap-2 text-center">
-                      <div class="p-2 bg-white border rounded">LB</div>
-                      <div class="p-2 bg-white border rounded">MB</div>
-                      <div class="p-2 bg-white border rounded">UB</div>
-                  </div>
-                  <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                      <div class="p-2 bg-white border rounded">LB</div>
-                      <div class="p-2 bg-white border rounded">MB</div>
-                      <div class="p-2 bg-white border rounded">UB</div>
-                  </div>
-              </div>
-              <div class="space-x-1 > * + *">
-                  <div class="grid grid-cols-2 gap-2 text-center">
-                      <div class="p-2 bg-white border rounded">SL</div>
-                      <div class="p-2 bg-white border rounded">SU</div>
-                  </div>
-
-                  <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                      <div class="p-2 bg-white border rounded">SL</div>
-                      <div class="p-2 bg-white border rounded">SU</div>
-                  </div>
-                  
-              </div>
-              
-          </div>
-
-          <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-            <div>
-                <div class="grid grid-cols-4 gap-2 text-center">
-                    <div class="p-2 bg-white border rounded">LB</div>
-                    <div class="p-2 bg-white border rounded">MB</div>
-                    <div class="p-2 bg-white border rounded">UB</div>
-                </div>
-                <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                    <div class="p-2 bg-white border rounded">LB</div>
-                    <div class="p-2 bg-white border rounded">MB</div>
-                    <div class="p-2 bg-white border rounded">UB</div>
-                </div>
-            </div>
-            <div class="space-x-1 > * + *">
-                <div class="grid grid-cols-2 gap-2 text-center">
-                    <div class="p-2 bg-white border rounded">SL</div>
-                    <div class="p-2 bg-white border rounded">SU</div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                    <div class="p-2 bg-white border rounded">SL</div>
-                    <div class="p-2 bg-white border rounded">SU</div>
-                </div>
-                
-            </div>
-            
+            {% endfor %}
         </div>
-
-
-        <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-          <div>
-              <div class="grid grid-cols-4 gap-2 text-center">
-                  <div class="p-2 bg-white border rounded">LB</div>
-                  <div class="p-2 bg-white border rounded">MB</div>
-                  <div class="p-2 bg-white border rounded">UB</div>
-              </div>
-              <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                  <div class="p-2 bg-white border rounded">LB</div>
-                  <div class="p-2 bg-white border rounded">MB</div>
-                  <div class="p-2 bg-white border rounded">UB</div>
-              </div>
-          </div>
-          <div class="space-x-1 > * + *">
-              <div class="grid grid-cols-2 gap-2 text-center">
-                  <div class="p-2 bg-white border rounded">SL</div>
-                  <div class="p-2 bg-white border rounded">SU</div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                  <div class="p-2 bg-white border rounded">SL</div>
-                  <div class="p-2 bg-white border rounded">SU</div>
-              </div>
-              
-          </div>
-          
-      </div>
-
-
-      <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-        <div>
-            <div class="grid grid-cols-4 gap-2 text-center">
-                <div class="p-2 bg-white border rounded">LB</div>
-                <div class="p-2 bg-white border rounded">MB</div>
-                <div class="p-2 bg-white border rounded">UB</div>
-            </div>
-            <div class="grid grid-cols-4 gap-2 text-center mt-2">
-                <div class="p-2 bg-white border rounded">LB</div>
-                <div class="p-2 bg-white border rounded">MB</div>
-                <div class="p-2 bg-white border rounded">UB</div>
-            </div>
-        </div>
-        <div class="space-x-1 > * + *">
-            <div class="grid grid-cols-2 gap-2 text-center">
-                <div class="p-2 bg-white border rounded">SL</div>
-                <div class="p-2 bg-white border rounded">SU</div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2 text-center mt-2">
-                <div class="p-2 bg-white border rounded">SL</div>
-                <div class="p-2 bg-white border rounded">SU</div>
-            </div>
-            
-        </div>
-        
-    </div>
-
-
-    <div class="flex border-2 p-2 rounded-lg bg-gray-100">
-      <div>
-          <div class="grid grid-cols-4 gap-2 text-center">
-              <div class="p-2 bg-white border rounded">LB</div>
-              <div class="p-2 bg-white border rounded">MB</div>
-              <div class="p-2 bg-white border rounded">UB</div>
-          </div>
-          <div class="grid grid-cols-4 gap-2 text-center mt-2">
-              <div class="p-2 bg-white border rounded">LB</div>
-              <div class="p-2 bg-white border rounded">MB</div>
-              <div class="p-2 bg-white border rounded">UB</div>
-          </div>
-      </div>
-      <div class="space-x-1 > * + *">
-          <div class="grid grid-cols-2 gap-2 text-center">
-              <div class="p-2 bg-white border rounded">SL</div>
-              <div class="p-2 bg-white border rounded">SU</div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-2 text-center mt-2">
-              <div class="p-2 bg-white border rounded">SL</div>
-              <div class="p-2 bg-white border rounded">SU</div>
-          </div>
-          
-      </div>
-      
-  </div>
-
-          
-
-          </div>
-        </div>
-        <!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-        
-
       </div>
     </div>
   </body>
