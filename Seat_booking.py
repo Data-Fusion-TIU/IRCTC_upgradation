@@ -91,8 +91,3 @@ class TrainBookingSystem:
         self.booked_seats[seat_number] = age_group
         self.seats[row - 1][col - 1] = 'X'
 
-# Load the booking data
-booking_data = pd.read_csv('train_booking_data.csv')  
-booking_system = TrainBookingSystem(booking_data)
-recommended_seats = booking_system.get_recommended_seats('18-25')
-print(recommended_seats)

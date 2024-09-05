@@ -49,6 +49,9 @@
         .seat.booked {
             background-image: url('/static/images/booked\ seats.png'); /* URL for booked chair */
         }
+        .seat.recommended {
+            background-image: url('/static/images/suggested\ seats.png');
+        }
 
         .empty {
             width: 40px; /* Increase width of middle space */
@@ -102,7 +105,7 @@
         </header>
 
         <div class="seating-chart">
-            {% for block in range(1, 5) %} <!-- Loop through 4 blocks of 2 rows each -->
+            {% for block in range(1, 10) %} <!-- Loop through 4 blocks of 2 rows each -->
             <div class="row-block">
                 {% for row in range(1, 3) %} <!-- Each block contains 2 rows -->
                 <div class="row">
@@ -110,7 +113,7 @@
                         {% if seat == 4 %}
                         <div class="empty"></div> <!-- Middle walk space -->
                         {% endif %}
-                        <div class="seat {% if seats_dict.get((block-1)*12 + (row-1)*6 + seat) %}booked{% else %}available{% endif %}">
+                        <div class="seat {% if seats_dict.get((block-1)*12 + (row-1)*6 + seat) %}booked{% elif (block-1)*12 + (row-1)*6 + seat in recommendation %}recommended{% else %}available{% endif %}">
                             {{ (block-1)*12 + (row-1)*6 + seat }}
                         </div>
                     {% endfor %}

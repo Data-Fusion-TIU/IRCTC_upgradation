@@ -66,11 +66,11 @@ def seat():
     age_group = request.form['age_group']
     booking_data = pd.read_csv('train_booking_data.csv')
     booking_system = TrainBookingSystem(booking_data)
-    booking_system.age_group = age_group
-    booking_system.confirm_age_group()
+    recommended_seats = booking_system.get_recommended_seats(age_group)
+
     
     # Pass the form data to the confirmation page
-    return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group)
+    return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group, recommendation=recommended_seats)
 
 
 @app.route('/signup')
