@@ -1,5 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
+from Seat_booking import TrainBookingSystem
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
@@ -62,6 +64,10 @@ def seat():
     age = request.form['age']
     gender = request.form['gender']
     age_group = request.form['age_group']
+    booking_data = pd.read_csv('train_booking_data.csv')
+    booking_system = TrainBookingSystem(booking_data)
+    booking_system.age_group = age_group
+    booking_system.confirm_age_group()
     
     # Pass the form data to the confirmation page
     return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group)
