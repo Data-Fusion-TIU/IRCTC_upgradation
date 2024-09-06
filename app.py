@@ -72,6 +72,9 @@ def seat():
     # Pass the form data to the confirmation page
     return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group, recommendation=recommended_seats)
 
+@app.route('/pay_and_confirm')
+def confirmed():
+    return render_template('pay_and_confirm.html')
 
 @app.route('/signup')
 def signup():
