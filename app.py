@@ -1,11 +1,15 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
+import requests
 from Seat_booking import TrainBookingSystem
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
 db = SQLAlchemy(app)
+
+RAPIDAPI_KEY = '3e7fabd9demsh258d5b8afd8208bp13c862jsna4d0ee130389'
+
 
 # Define the Seat model
 class Seat(db.Model):
@@ -37,19 +41,39 @@ def signin():
 def booking():
     return render_template('booking.html')
 
+@app.route('/get_trains', methods=['POST'])
+def get_trains():
+    data = request.json
+    from_station = data.get('from')
+    to_station = data.get('to')
+    journey_date = data.get('journeyDate')
 
-#@app.route('/confirmation', methods=['POST'])
-#def confirmation():
-    # Retrieve form data
-#    full_name = request.form['full_name']
-#    age = request.form['age']
-#    gender = request.form['gender']
-#    email = request.form['email']
-#    phone = request.form['phone']
-#    preferred_age_group = request.form['preferred_age_group']
+
+    if not from_station or not to_station or not journey_date:
+        return jsonify({'error': 'Missing from station, to station, or journey date'}), 400
+
+    headers = {
+        'x-rapidapi-host': 'irctc1.p.rapidapi.com',
+        'x-rapidapi-key': '3e7fabd9demsh258d5b8afd8208bp13c862jsna4d0ee130389'
+    }
     
-    # Pass the form data to the confirmation page
-#    return render_template('confirmation.html', name=full_name, phone=phone, age=age, gender=gender, age_group=preferred_age_group)
+    url = f'https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode={from_station}&toStationCode={to_station}&dateOfJourney={journey_date}'
+
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        
+        # Log the raw response
+        train_data = response.json()
+        print('API Response:', train_data)  # Debugging purpose
+        
+        if 'status' in train_data and train_data['status'] == True and 'data' in train_data:
+            return jsonify(train_data)
+        else:
+            return jsonify({'error': 'Unexpected data format or no data available'}), 500
+
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/seat', methods=['POST'])
 def seat():

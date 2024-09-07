@@ -58,6 +58,7 @@
             background-image: url('/static/images/booked\ seats.png');
             /* URL for booked chair */
             pointer-events: none;
+            cursor: not-allowed;
         }
 
         .seat.recommended {
@@ -163,7 +164,26 @@
                     <p><strong>Age:</strong> {{ age }}</p>
                     <p><strong>Phone Number:</strong> {{ phone }}</p>
                     <p><strong>Gender:</strong> {{ gender }}</p>
+
                     <!-- You can add more details here if needed -->
+                    <!-- Image Section -->
+                    <div class="mt-6">
+                        <h3 class="font-bold text-lg mb-4">Image Key</h3>
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex items-center">
+                                <img src="/static/images/available seats.png" alt="Description 1" class="w-12 h-12 object-cover mr-4">
+                                <p class="text-sm">Available Seats</p>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="/static/images/booked seats.png" alt="Description 2" class="w-12 h-12 object-cover mr-4">
+                                <p class="text-sm">Booked Seats</p>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="/static/images/suggested seats.png" alt="Description 3" class="w-12 h-12 object-cover mr-4">
+                                <p class="text-sm">Suggested Seats</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Form to send selected seat -->
                 <form id="seatForm" method="POST" action="/book-seat">
