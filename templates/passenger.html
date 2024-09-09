@@ -45,15 +45,55 @@
 
       if (selectedTrain) {
         // Display the train details on the passenger page (you can customize this part)
-        document.getElementById("train_name").textContent = `${selectedTrain.train_name} (${selectedTrain.train_number})`;
+        document.getElementById("train_name").textContent = `Train Name: ${selectedTrain.train_name} (${selectedTrain.train_number})`;
         document.getElementById("from_sta").textContent = `${selectedTrain.from_sta} at ${selectedTrain.from_std}`;
         document.getElementById("to_sta").textContent = `${selectedTrain.to_sta} at ${selectedTrain.to_std}`;
-        document.getElementById("distance").textContent = `${selectedTrain.distance} km`;
+        document.getElementById("distance").textContent = `Distance: ${selectedTrain.distance} km`;
         document.getElementById("availableSeats").textContent = `Available Seats: ${selectedTrain.availableSeats}`;
       } else {
         document.getElementById("train_info").textContent = "No train details found. Please go back and select a train.";
       }
+      document.getElementById("passengerForm").addEventListener("submit", function (event) {
+    event.preventDefault();  // Prevent the default form submission
+
+    const fullName = document.getElementById("full_name").value;
+    const age = document.getElementById("age").value;
+    const phone = document.getElementById("phone").value;
+    const gender = document.getElementById("gender").value;
+    const ageGroup = document.getElementById("age_group").value;
+
+    // Store the form data in localStorage
+    const passengerDetails = {
+        full_name: fullName,
+        age: age,
+        phone: phone,
+        gender: gender,
+        age_group: ageGroup
+    };
+
+    localStorage.setItem('passengerDetails', JSON.stringify(passengerDetails));
+
+    // Create a form element to submit the data
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/seat';  // Set the action to your Flask route
+
+    // Create hidden input elements for each piece of data
+    for (const [key, value] of Object.entries(passengerDetails)) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    }
+
+    // Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
+});
+
     });
+
 
   </script>
 </head>
@@ -121,11 +161,11 @@
           <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
             <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Add
               passenger details</h2>
-            <form action="/seat" method="POST">
+            <form id="passengerForm" method="POST" action="/seat">
               <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                 <label class="flex flex-col min-w-40 flex-1" for="full_name">
                   <p class="text-[#0e141b] text-base font-medium leading-normal pb-2">Full name</p>
-                  <input type="text" id="full_name" name="full name" required
+                  <input type="text" id="full_name" name="full_name" required
                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0e141b] focus:outline-0 focus:ring-0 border-none bg-[#e7edf3] focus:border-none h-14 placeholder:text-[#4e7397] p-4 text-base font-normal leading-normal"
                     value="" required />
                 </label>
@@ -165,7 +205,7 @@
 
 
               <div class="flex px-4 py-3 justify-end">
-                <button id="continueButton"
+                <button id="continueButton" type="submit"
                   class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 bg-[#1980e6] text-slate-50 text-base font-bold leading-normal tracking-[0.015em]">
                   <span class="truncate">Save and continue</span>
                 </button>

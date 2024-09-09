@@ -1,264 +1,270 @@
 <html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900"
-    />
 
-    <title>Galileo Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
-          <div class="flex items-center gap-4 text-[#111418]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_6_535)">
+  <title>Galileo Design</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+    style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
+        <div class="flex items-center gap-4 text-[#111418]">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_6_535)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                  fill="currentColor"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_535">
+                  <rect width="48" height="48" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+          <div class="flex items-center gap-9">
+            <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Trains</a>
+            <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Retiring Room</a>
+            <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Lounge</a>
+            <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Coach Booking</a>
+          </div>
+          <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]">
+            <span class="truncate">Check PNR Status</span>
+          </button>
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+            style='background-image: url("https://cdn.usegalileo.ai/stability/db6b6501-b871-451d-bbd4-535f8dfb59f4.png");'>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <h1>Booking Confirmation</h1>
+        <p id="confirmationMessage">You have booked seat number: </p>
+        <p>Please proceed with the payment to confirm your booking.</p>
+        <!-- You can add payment integration or additional details here -->
+      </div>
+      <!-- ----------------------------------------------------------------------------------------------------------------------- -->
+      <div class="px-40 flex flex-1 justify-center py-5">
+        <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+          <h1 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-center pb-3 pt-5">
+            Ticket has been booked</h1>
+          <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Journey
+            Details</h2>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+                data-icon="Train" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                  viewBox="0 0 256 256">
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
-                </defs>
+                    d="M184,24H72A32,32,0,0,0,40,56V184a32,32,0,0,0,32,32h8L65.6,235.2a8,8,0,1,0,12.8,9.6L100,216h56l21.6,28.8a8,8,0,1,0,12.8-9.6L176,216h8a32,32,0,0,0,32-32V56A32,32,0,0,0,184,24ZM56,120V80h64v40Zm80-40h64v40H136ZM72,40H184a16,16,0,0,1,16,16v8H56V56A16,16,0,0,1,72,40ZM184,200H72a16,16,0,0,1-16-16V136H200v48A16,16,0,0,1,184,200ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">New Delhi to Mumbai</p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Rajdhani Express</p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-fit">
+                <span class="truncate">PNR - 12345678</span>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+                data-icon="Chair" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M208,136H176V104h16a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V88a16,16,0,0,0,16,16H80v32H48a16,16,0,0,0-16,16v16a16,16,0,0,0,16,16h8v40a8,8,0,0,0,16,0V184H184v40a8,8,0,0,0,16,0V184h8a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136ZM64,40H192V88H64Zm32,64h64v32H96Zm112,64H48V152H208v16Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">AC First Class</p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">1A</p>
+              </div>
+            </div>
+            <!-- <div class="shrink-0"><p class="text-[#111418] text-base font-normal leading-normal">2</p></div> -->
+          </div>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+            <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+              data-icon="MapPin" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z">
+                </path>
               </svg>
             </div>
-            <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
-          </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Trains</a>
-              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Retiring Room</a>
-              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Lounge</a>
-              <a class="text-[#111418] text-sm font-medium leading-normal" href="#">Coach Booking</a>
+            <div class="flex flex-col justify-center">
+              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Departure</p>
+              <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">09-Oct-2024 , 10:00 AM</p>
             </div>
-            <button
-              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <span class="truncate">Check PNR Status</span>
-            </button>
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style='background-image: url("https://cdn.usegalileo.ai/stability/db6b6501-b871-451d-bbd4-535f8dfb59f4.png");'
-            ></div>
           </div>
-        </header>
-
-        <div class="container">
-          <h1>Booking Confirmation</h1>
-          <h1>Booking Confirmation</h1>
-    <p id="confirmationMessage">You have booked seat number: </p>
-          <p>Please proceed with the payment to confirm your booking.</p>
-          <!-- You can add payment integration or additional details here -->
-      </div>
-        <!-- ----------------------------------------------------------------------------------------------------------------------- -->
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
-            <h1 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-center pb-3 pt-5">Ticket has been booked</h1>
-            <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Journey Details</h2>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
-              <div class="flex items-center gap-4">
-                <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12" data-icon="Train" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M184,24H72A32,32,0,0,0,40,56V184a32,32,0,0,0,32,32h8L65.6,235.2a8,8,0,1,0,12.8,9.6L100,216h56l21.6,28.8a8,8,0,1,0,12.8-9.6L176,216h8a32,32,0,0,0,32-32V56A32,32,0,0,0,184,24ZM56,120V80h64v40Zm80-40h64v40H136ZM72,40H184a16,16,0,0,1,16,16v8H56V56A16,16,0,0,1,72,40ZM184,200H72a16,16,0,0,1-16-16V136H200v48A16,16,0,0,1,184,200ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="flex flex-col justify-center">
-                  <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">New Delhi to Mumbai</p>
-                  <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Rajdhani Express</p>
-                </div>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+            <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+              data-icon="MapPin" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                viewBox="0 0 256 256">
+                <path
+                  d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z">
+                </path>
+              </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Arrival</p>
+              <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">10-Oct-2024 , 10:00 PM</p>
+            </div>
+          </div>
+          <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Passenger
+            Details</h2>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+              style='background-image: url("https://cdn.usegalileo.ai/stability/5099ff68-d247-465d-9388-a4927b57ed82.png");'>
+            </div>
+            <div class="flex justify-between w-full">
+              <div class="flex flex-col justify-center">
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Priya Singh</p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Adult, Female, Age 32</p>
               </div>
               <div class="shrink-0">
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-fit"
-                >
-                  <span class="truncate">PNR - 12345678</span>
-                </button>
+                <p class="text-[#111418] text-base font-normal leading-normal">S1/ 41/ LB</p>
               </div>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
-              <div class="flex items-center gap-4">
-                <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12" data-icon="Chair" data-size="24px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M208,136H176V104h16a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V88a16,16,0,0,0,16,16H80v32H48a16,16,0,0,0-16,16v16a16,16,0,0,0,16,16h8v40a8,8,0,0,0,16,0V184H184v40a8,8,0,0,0,16,0V184h8a16,16,0,0,0,16-16V152A16,16,0,0,0,208,136ZM64,40H192V88H64Zm32,64h64v32H96Zm112,64H48V152H208v16Z"
-                    ></path>
-                  </svg>
-                </div>
-                <div class="flex flex-col justify-center">
-                  <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">AC First Class</p>
-                  <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">1A</p>
-                </div>
-              </div>
-              <!-- <div class="shrink-0"><p class="text-[#111418] text-base font-normal leading-normal">2</p></div> -->
+          </div>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+              style='background-image: url("https://cdn.usegalileo.ai/stability/74e0b8fa-9d16-40b8-84a5-41e4f7ea936f.png");'>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12" data-icon="MapPin" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"
-                  ></path>
-                </svg>
-              </div>
+            <div class="flex justify-between w-full">
               <div class="flex flex-col justify-center">
-                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Departure</p>
-                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">09-Oct-2024 , 10:00 AM</p>
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Rajesh Kumar</p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Adult, Male, Age 35</p>
+              </div>
+              <div class="shrink-0">
+                <p class="text-[#111418] text-base font-normal leading-normal">S1/ 42/ MB</p>
               </div>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12" data-icon="MapPin" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"
-                  ></path>
-                </svg>
-              </div>
-              <div class="flex flex-col justify-center">
-                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Arrival</p>
-                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">10-Oct-2024 , 10:00 PM</p>
-              </div>
+          </div>
+          <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Fare Details
+          </h2>
+          <div class="p-4">
+            <div class="flex justify-between gap-x-6 py-2">
+              <p class="text-[#637588] text-sm font-normal leading-normal">Base Fare</p>
+              <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 145</p>
             </div>
-            <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Passenger Details</h2>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://cdn.usegalileo.ai/stability/5099ff68-d247-465d-9388-a4927b57ed82.png");'
-              ></div>
-              <div class="flex justify-between w-full">
-                <div class="flex flex-col justify-center">
-                    <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Priya Singh</p>
-                    <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Adult, Female, Age 32</p>
-                </div>
-                <div class="shrink-0"><p class="text-[#111418] text-base font-normal leading-normal">S1/ 41/ LB</p></div>
-              </div>
+            <div class="flex justify-between gap-x-6 py-2">
+              <p class="text-[#637588] text-sm font-normal leading-normal">Taxes</p>
+              <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 14</p>
             </div>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
-                style='background-image: url("https://cdn.usegalileo.ai/stability/74e0b8fa-9d16-40b8-84a5-41e4f7ea936f.png");'
-              ></div>
-              <div class="flex justify-between w-full">
-                <div class="flex flex-col justify-center">
-                    <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1">Rajesh Kumar</p>
-                    <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2">Adult, Male, Age 35</p>
-                </div>
-                <div class="shrink-0"><p class="text-[#111418] text-base font-normal leading-normal">S1/ 42/ MB</p></div>
-              </div>
+            <div class="flex justify-between gap-x-6 py-2">
+              <p class="text-[#637588] text-sm font-normal leading-normal">Other Charges</p>
+              <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 5</p>
             </div>
-            <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Fare Details</h2>
-            <div class="p-4">
-              <div class="flex justify-between gap-x-6 py-2">
-                <p class="text-[#637588] text-sm font-normal leading-normal">Base Fare</p>
-                <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 145</p>
-              </div>
-              <div class="flex justify-between gap-x-6 py-2">
-                <p class="text-[#637588] text-sm font-normal leading-normal">Taxes</p>
-                <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 14</p>
-              </div>
-              <div class="flex justify-between gap-x-6 py-2">
-                <p class="text-[#637588] text-sm font-normal leading-normal">Other Charges</p>
-                <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 5</p>
-              </div>
-              <div class="flex justify-between gap-x-6 py-2">
-                <p class="text-[#637588] text-sm font-normal leading-normal">Total</p>
-                <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 164</p>
-              </div>
+            <div class="flex justify-between gap-x-6 py-2">
+              <p class="text-[#637588] text-sm font-normal leading-normal">Total</p>
+              <p class="text-[#111418] text-sm font-normal leading-normal text-right">Rs. 164</p>
             </div>
-            <div class="flex justify-between x-4 py-3">
-              <button
-                class="flex min-w-[75px] max-w-[460px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#f0f2f4] text-[#111418] text-base font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Share Ticket</span>
-              </button>
-              <button
-                class="flex min-w-[75px] max-w-[460px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#1466b8] text-white text-base font-bold leading-normal tracking-[0.015em]"
-              >
-                <span class="truncate">Download Ticket</span>
-              </button>
-            </div>
+          </div>
+          <div class="flex justify-between x-4 py-3">
+            <button
+              class="flex min-w-[75px] max-w-[460px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#f0f2f4] text-[#111418] text-base font-bold leading-normal tracking-[0.015em]">
+              <span class="truncate">Share Ticket</span>
+            </button>
+            <button
+              class="flex min-w-[75px] max-w-[460px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#1466b8] text-white text-base font-bold leading-normal tracking-[0.015em]">
+              <span class="truncate">Download Ticket</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      // Fetch data from seat.html and display it on the current page
-      fetch('seat.html')
-        .then(response => response.text())
-        .then(data => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(data, 'text/html');
-  
-          // Extract details from seat.html
-          const route = doc.getElementById('route').textContent;
-          const train = doc.getElementById('train').textContent;
-          document.getElementById("train_name").textContent = `${selectedTrain.train_name} (${selectedTrain.train_number})`;
+  </div>
+  <script>
+    // Fetch data from seat.html and display it on the current page
+    fetch('seat.html')
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
 
-          const classType = doc.getElementById('class').textContent;
-          const seat = doc.getElementById('seat').textContent;
-          const departure = doc.getElementById('departure').textContent;
-          const arrival = doc.getElementById('arrival').textContent;
-  
-          // Passenger details
-          const passengers = doc.querySelectorAll('.passenger');
-          const passengerDetails = Array.from(passengers).map(p => ({
-            name: p.getAttribute('data-name'),
-            age: p.getAttribute('data-age'),
-            gender: p.getAttribute('data-gender'),
-            seat: p.getAttribute('data-seat')
-          }));
-  
-          // Fare details
-          const baseFare = doc.getElementById('base-fare').textContent;
-          const taxes = doc.getElementById('taxes').textContent;
-          const charges = doc.getElementById('charges').textContent;
-          const total = doc.getElementById('total').textContent;
-  
-          // Insert extracted data into the current page
-          document.getElementById('route-display').textContent = route;
-          document.getElementById('train-display').textContent = train;
-          document.getElementById('class-display').textContent = classType;
-          document.getElementById('seat-display').textContent = seat;
-          document.getElementById('departure-display').textContent = departure;
-          document.getElementById('arrival-display').textContent = arrival;
-  
-          // Insert passenger details
-          const passengerContainer = document.getElementById('passenger-details-display');
-          passengerContainer.innerHTML = '';
-          passengerDetails.forEach(p => {
-            const div = document.createElement('div');
-            div.innerHTML = `<p>${p.name} - ${p.age} years old, ${p.gender}</p><p>Seat: ${p.seat}</p>`;
-            passengerContainer.appendChild(div);
-          });
-  
-          // Insert fare details
-          document.getElementById('base-fare-display').textContent = `Rs. ${baseFare}`;
-          document.getElementById('taxes-display').textContent = `Rs. ${taxes}`;
-          document.getElementById('charges-display').textContent = `Rs. ${charges}`;
-          document.getElementById('total-display').textContent = `Rs. ${total}`;
+        // Extract details from seat.html
+        const route = doc.getElementById('route').textContent;
+        const train = doc.getElementById('train').textContent;
+        const classType = doc.getElementById('class').textContent;
+        const seat = doc.getElementById('seat').textContent;
+        const departure = doc.getElementById('departure').textContent;
+        const arrival = doc.getElementById('arrival').textContent;
+
+        // Passenger details
+        const passengers = doc.querySelectorAll('.passenger');
+        const passengerDetails = Array.from(passengers).map(p => ({
+          name: p.getAttribute('data-name'),
+          age: p.getAttribute('data-age'),
+          gender: p.getAttribute('data-gender'),
+          seat: p.getAttribute('data-seat')
+        }));
+
+        // Fare details
+        const baseFare = doc.getElementById('base-fare').textContent;
+        const taxes = doc.getElementById('taxes').textContent;
+        const charges = doc.getElementById('charges').textContent;
+        const total = doc.getElementById('total').textContent;
+
+        // Insert extracted data into the current page
+        document.getElementById('route-display').textContent = route;
+        document.getElementById('train-display').textContent = train;
+        document.getElementById('class-display').textContent = classType;
+        document.getElementById('seat-display').textContent = seat;
+        document.getElementById('departure-display').textContent = departure;
+        document.getElementById('arrival-display').textContent = arrival;
+
+        // Insert passenger details
+        const passengerContainer = document.getElementById('passenger-details-display');
+        passengerContainer.innerHTML = '';
+        passengerDetails.forEach(p => {
+          const div = document.createElement('div');
+          div.innerHTML = `<p>${p.name} - ${p.age} years old, ${p.gender}</p><p>Seat: ${p.seat}</p>`;
+          passengerContainer.appendChild(div);
         });
-        // Retrieve the seat number from local storage
-        const selectedSeat = localStorage.getItem('selected_seat');
-        if (selectedSeat) {
-            document.getElementById('confirmationMessage').innerText += selectedSeat;
-        } else {
-            document.getElementById('confirmationMessage').innerText += 'Not available.';
-        }
 
-        // Optionally, clear the local storage if no longer needed
-        // localStorage.removeItem('selected_seat');
-  
-    </script>
-  </body>
+        // Insert fare details
+        document.getElementById('base-fare-display').textContent = `Rs. ${baseFare}`;
+        document.getElementById('taxes-display').textContent = `Rs. ${taxes}`;
+        document.getElementById('charges-display').textContent = `Rs. ${charges}`;
+        document.getElementById('total-display').textContent = `Rs. ${total}`;
+      });
+    // Retrieve the seat number from local storage
+    const selectedSeat = localStorage.getItem('selected_seat');
+    if (selectedSeat) {
+      document.getElementById('confirmationMessage').innerText += selectedSeat;
+    } else {
+      document.getElementById('confirmationMessage').innerText += 'Not available.';
+    }
+
+    // Optionally, clear the local storage if no longer needed
+    // localStorage.removeItem('selected_seat');
+
+  </script>
+</body>
+
 </html>

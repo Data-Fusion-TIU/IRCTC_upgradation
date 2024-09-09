@@ -106,7 +106,7 @@ def seat():
     total_seats = len(seats_dict)
     seats_per_row = 6  # 3 + 1 + 2 configuration
     total_rows = (total_seats + seats_per_row - 1) // seats_per_row
-    name = request.form['full name']
+    name = request.form['full_name']
     phone = request.form['phone']
     age = request.form['age']
     gender = request.form['gender']
@@ -121,8 +121,55 @@ def seat():
 
 @app.route('/pay_and_confirm')
 def confirm_booking():
-   return render_template('pay_and_confirm.html')
+   return render_template('payment.html')
 
+
+@app.route('/update_dataset', methods=['POST'])
+def update_dataset():
+    # Retrieve data from the form
+    seat_number = request.form['seat_number']
+    user_age = request.form['user_age']
+    preferred_age_group = request.form['preferred_age_group']
+    seat_booked = request.form['seat_booked']
+
+    # Define CSV file path
+    csv_file_path = 'train_booking_data.csv'
+
+    # Load existing dataset
+    df = pd.read_csv(csv_file_path)
+
+    # Generate the next Booking ID
+    booking_id = df['Booking ID'].max() + 1 if not df.empty else 1
+
+    # Extract row and column information (you may need additional logic for this)
+    # For demonstration, assuming row and column are derived from seat number
+    row = int(seat_number[0])  # Example logic, adjust as necessary
+    column = int(seat_number[1:])  # Example logic, adjust as necessary
+
+# Create a new row for the dataset as a DataFrame
+    new_row = pd.DataFrame({
+        'Booking ID': [booking_id],
+        'User Age': [user_age],
+        'Preferred Age Group': [preferred_age_group],
+        'Seat Number': [seat_number],
+        'Row': [row],
+        'Column': [column],
+        'Seat Type': ['Regular'],  # Adjust as needed
+        'Seat Booked': [seat_booked]
+    })
+
+
+    # Append new row to the DataFrame
+    df = pd.concat([df, new_row], ignore_index=True)
+
+    # Save updated DataFrame back to CSV
+    df.to_csv(csv_file_path, index=False)
+
+    return redirect(url_for('success'))  # Redirect to a success page or home page
+
+@app.route('/success')
+def success():
+    return render_template('pay_and_confirm.html')
 
 @app.route('/signup')
 def signup():
