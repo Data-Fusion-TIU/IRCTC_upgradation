@@ -5,13 +5,13 @@
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
     href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" />
 
-  <title>Galileo Design</title>
+  <title>Enter passenger details</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
 
-<body>
+<body>  
   <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden"
     style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
     <div class="layout-container flex h-full grow flex-col">
@@ -59,6 +59,8 @@
           </div>
         </div>
       </header>
+      <div id="trainDetails"></div>
+
       <div class="px-40 flex flex-1 justify-center py-5">
         <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
           <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Add
@@ -123,12 +125,32 @@
               <a class="text-[#4e7397] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
               <a class="text-[#4e7397] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
             </div>
-            <p class="text-[#4e7397] text-base font-normal leading-normal">© 2023 IRCTC. All rights reserved.</p>
+            <p class="text-[#4e7397] text-base font-normal leading-normal">© 2024 IRCTC. All rights reserved.</p>
           </footer>
         </div>
       </footer>
     </div>
   </div>
+  <script>
+    // Function to get query parameters from the URL
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const trainNumber = params.get('trainNo');
+        const fromStation = params.get('from');
+        const toStation = params.get('to');
+        const coachType = params.get('coachType');
+
+        document.getElementById('trainDetails').innerHTML = `
+            <h3>Booking Details</h3>
+            <p><strong>Train Number:</strong> ${trainNumber}</p>
+            <p><strong>From Station:</strong> ${fromStation}</p>
+            <p><strong>To Station:</strong> ${toStation}</p>
+            <p><strong>Coach Type:</strong> ${coachType}</p>
+        `;
+    }
+
+    window.onload = getQueryParams;
+</script>
 </body>
 
 </html>
