@@ -53,6 +53,14 @@
             ></div>
           </div>
         </header>
+
+        <div class="container">
+          <h1>Booking Confirmation</h1>
+          <h1>Booking Confirmation</h1>
+    <p id="confirmationMessage">You have booked seat number: </p>
+          <p>Please proceed with the payment to confirm your booking.</p>
+          <!-- You can add payment integration or additional details here -->
+      </div>
         <!-- ----------------------------------------------------------------------------------------------------------------------- -->
         <div class="px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
@@ -184,6 +192,73 @@
         </div>
       </div>
     </div>
-    <script src="confirmation.js"></script>
+    <script>
+      // Fetch data from seat.html and display it on the current page
+      fetch('seat.html')
+        .then(response => response.text())
+        .then(data => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, 'text/html');
+  
+          // Extract details from seat.html
+          const route = doc.getElementById('route').textContent;
+          const train = doc.getElementById('train').textContent;
+          document.getElementById("train_name").textContent = `${selectedTrain.train_name} (${selectedTrain.train_number})`;
+
+          const classType = doc.getElementById('class').textContent;
+          const seat = doc.getElementById('seat').textContent;
+          const departure = doc.getElementById('departure').textContent;
+          const arrival = doc.getElementById('arrival').textContent;
+  
+          // Passenger details
+          const passengers = doc.querySelectorAll('.passenger');
+          const passengerDetails = Array.from(passengers).map(p => ({
+            name: p.getAttribute('data-name'),
+            age: p.getAttribute('data-age'),
+            gender: p.getAttribute('data-gender'),
+            seat: p.getAttribute('data-seat')
+          }));
+  
+          // Fare details
+          const baseFare = doc.getElementById('base-fare').textContent;
+          const taxes = doc.getElementById('taxes').textContent;
+          const charges = doc.getElementById('charges').textContent;
+          const total = doc.getElementById('total').textContent;
+  
+          // Insert extracted data into the current page
+          document.getElementById('route-display').textContent = route;
+          document.getElementById('train-display').textContent = train;
+          document.getElementById('class-display').textContent = classType;
+          document.getElementById('seat-display').textContent = seat;
+          document.getElementById('departure-display').textContent = departure;
+          document.getElementById('arrival-display').textContent = arrival;
+  
+          // Insert passenger details
+          const passengerContainer = document.getElementById('passenger-details-display');
+          passengerContainer.innerHTML = '';
+          passengerDetails.forEach(p => {
+            const div = document.createElement('div');
+            div.innerHTML = `<p>${p.name} - ${p.age} years old, ${p.gender}</p><p>Seat: ${p.seat}</p>`;
+            passengerContainer.appendChild(div);
+          });
+  
+          // Insert fare details
+          document.getElementById('base-fare-display').textContent = `Rs. ${baseFare}`;
+          document.getElementById('taxes-display').textContent = `Rs. ${taxes}`;
+          document.getElementById('charges-display').textContent = `Rs. ${charges}`;
+          document.getElementById('total-display').textContent = `Rs. ${total}`;
+        });
+        // Retrieve the seat number from local storage
+        const selectedSeat = localStorage.getItem('selected_seat');
+        if (selectedSeat) {
+            document.getElementById('confirmationMessage').innerText += selectedSeat;
+        } else {
+            document.getElementById('confirmationMessage').innerText += 'Not available.';
+        }
+
+        // Optionally, clear the local storage if no longer needed
+        // localStorage.removeItem('selected_seat');
+  
+    </script>
   </body>
-</html>ss
+</html>

@@ -8,7 +8,30 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
 db = SQLAlchemy(app)
 
-RAPIDAPI_KEY = '3e7fabd9demsh258d5b8afd8208bp13c862jsna4d0ee130389'
+@app.route('/import_csv')
+def import_csv():
+    # Load the CSV
+    booking_data = pd.read_csv('train_booking_data.csv')
+    
+    # Clear existing seat data
+    Seat.query.delete()
+    db.session.commit()
+
+    # Insert new data
+    for _, row in booking_data.iterrows():
+        seat = Seat(
+            user_age=row['User Age'],
+            preferred_age_group=row['Preferred Age Group'],
+            seat_number=row['Seat Number'],
+            row=row['Row'],
+            column=row['Column'],
+            seat_type=row['Seat Type'],
+            is_booked=row['Seat Booked'] == 'TRUE'
+        )
+        db.session.add(seat)
+    db.session.commit()
+
+    return 'CSV Data Imported Successfully'
 
 
 # Define the Seat model
@@ -54,7 +77,7 @@ def get_trains():
 
     headers = {
         'x-rapidapi-host': 'irctc1.p.rapidapi.com',
-        'x-rapidapi-key': '3e7fabd9demsh258d5b8afd8208bp13c862jsna4d0ee130389'
+        'x-rapidapi-key': 'efefa02b4fmshadb956299b0b3fap10dcdcjsnaa5f51d3dd29'
     }
     
     url = f'https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode={from_station}&toStationCode={to_station}&dateOfJourney={journey_date}'
@@ -97,12 +120,15 @@ def seat():
     return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group, recommendation=recommended_seats)
 
 @app.route('/pay_and_confirm')
-def confirmed():
-    return render_template('pay_and_confirm.html')
+def confirm_booking():
+   return render_template('pay_and_confirm.html')
+
 
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

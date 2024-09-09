@@ -1,7 +1,3 @@
-// Select all "Book Now" buttons
-
-
-
 async function fetchTrainDetails() {
   const from = document.getElementById("from").value;
   const to = document.getElementById("to").value;
@@ -32,6 +28,7 @@ async function fetchTrainDetails() {
   }
 }
 
+
 function displayTrainDetails(trainsData) {
   const trainDetailsDiv = document.getElementById("train_details");
 
@@ -44,7 +41,7 @@ function displayTrainDetails(trainsData) {
   }
 
   let trains = '';
-  trainsData.forEach(train => {
+  trainsData.forEach((train, index) => {
     trains += `<div class="train-card bg-white shadow-md rounded-lg p-6 mb-4">
                     <h3 class="train-name text-lg font-bold text-gray-800 mb-2">${train.train_name} (${train.train_number})</h3>
                     <div class="train-info flex justify-between items-center border-t border-b border-gray-200 py-2 my-2">
@@ -86,7 +83,7 @@ function displayTrainDetails(trainsData) {
                             ${train.availableSeats > 0 ? `Available: ${train.availableSeats} Seats` : 'Waitlisted'}
                         </p>
                     </div>
-                    <button class="book-btn bg-blue-500 text-white py-2 px-4 rounded-lg w-full font-bold mt-4 hover:bg-blue-600">
+                    <button class="book-btn bg-blue-500 text-white py-2 px-4 rounded-lg w-full font-bold mt-4 hover:bg-blue-600" data-train-index="${index}">
                         Book Now
                     </button>
                  </div>`;
@@ -100,9 +97,14 @@ function displayTrainDetails(trainsData) {
   // Add a click event listener to each button
   bookNowButtons.forEach(button => {
     button.addEventListener("click", function () {
+      const trainIndex = this.getAttribute('data-train-index');
+      const selectedTrain = trainsData[trainIndex];
+
+      // Store the selected train details in localStorage
+      localStorage.setItem('selectedTrain', JSON.stringify(selectedTrain));
+
       // Redirect to passenger.html
       window.location.href = "passenger";
     });
   });
-
 }
