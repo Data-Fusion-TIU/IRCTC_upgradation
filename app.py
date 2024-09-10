@@ -115,7 +115,7 @@ def seat():
     booking_system = TrainBookingSystem(booking_data)
     recommended_seats = booking_system.get_recommended_seats(age_group)
 
-    
+
     # Pass the form data to the confirmation page
     return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group, recommendation=recommended_seats)
 
@@ -127,10 +127,10 @@ def confirm_booking():
 @app.route('/update_dataset', methods=['POST'])
 def update_dataset():
     # Retrieve data from the form
-    seat_number = request.form['seat_number']
+    seat_number = int(request.form['seat_number'])
     user_age = request.form['user_age']
     preferred_age_group = request.form['preferred_age_group']
-    seat_booked = request.form['seat_booked']
+    # seat_booked = request.form['seat_booked']
 
     # Define CSV file path
     csv_file_path = 'train_booking_data.csv'
@@ -143,8 +143,9 @@ def update_dataset():
 
     # Extract row and column information (you may need additional logic for this)
     # For demonstration, assuming row and column are derived from seat number
-    row = int(seat_number[0])  # Example logic, adjust as necessary
-    column = int(seat_number[1:])  # Example logic, adjust as necessary
+    row = ((seat_number - 1) // 6) + 1
+  # Example logic, adjust as necessary
+    column = ((seat_number - 1) % 6)+1  # Example logic, adjust as necessary
 
 # Create a new row for the dataset as a DataFrame
     new_row = pd.DataFrame({
@@ -155,7 +156,7 @@ def update_dataset():
         'Row': [row],
         'Column': [column],
         'Seat Type': ['Regular'],  # Adjust as needed
-        'Seat Booked': [seat_booked]
+        'Seat Booked': True
     })
 
 

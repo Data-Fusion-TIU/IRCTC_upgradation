@@ -301,13 +301,19 @@
                     {% for row in range(1, 3) %}
                     <div class="row">
                         {% for seat in range(1, 7) %}
+                        <!-- Calculate seat number once -->
+                        {% set seat_number = (block-1)*12 + (row-1)*6 + seat %}
+
+                        <!-- Leave an empty space for the 4th seat -->
                         {% if seat == 4 %}
                         <div class="empty"></div>
                         {% endif %}
-                        <div id="seat-{{ (block-1)*12 + (row-1)*6 + seat }}"
-                            class="seat {% if seats_dict.get((block-1)*12 + (row-1)*6 + seat) %}booked{% elif (block-1)*12 + (row-1)*6 + seat in recommendation %}recommended{% else %}available{% endif %}"
-                            onclick="selectSeat({{ (block-1)*12 + (row-1)*6 + seat }})">
-                            {{ (block-1)*12 + (row-1)*6 + seat }}
+
+                        <!-- Seat Div with dynamic classes for status and seat number -->
+                        <div id="seat-{{ seat_number }}"
+                            class="seat {% if seats_dict.get(seat_number, False) %}booked{% elif seat_number in recommendation %}recommended{% else %}available{% endif %}"
+                            onclick="selectSeat({{ seat_number }})">
+                            {{ seat_number }}
                         </div>
                         {% endfor %}
                     </div>
@@ -315,6 +321,7 @@
                 </div>
                 {% endfor %}
             </div>
+
         </div>
         <div class="footer">
             <button type="button" onclick="bookSeat()"
