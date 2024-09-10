@@ -6,6 +6,7 @@
         href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" />
 
     <title>Choose your seat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <style>
         .seating-chart {
@@ -50,19 +51,25 @@
         }
 
         .seat.available {
-            background-image: url('/static/images/available\ seats.png');
+            /*background-image: url('/static/images/available\ seats.png');
             /* URL for available chair */
+            font-size: 34px;
+        
         }
 
         .seat.booked {
-            background-image: url('/static/images/booked\ seats.png');
+            /*background-image: url('/static/images/booked\ seats.png');
             /* URL for booked chair */
+            font-size: 34px;
+            color: red;
             pointer-events: none;
             cursor: not-allowed;
         }
 
         .seat.recommended {
-            background-image: url('/static/images/suggested\ seats.png');
+            /*background-image: url('/static/images/suggested\ seats.png');*/
+            font-size: 34px;
+            color: orange;
         }
 
         .empty {
@@ -75,7 +82,8 @@
         }
 
         .seat.selected {
-            border: 2px solid blue;
+            color: blue;
+
         }
 
         .page-content {
@@ -272,19 +280,20 @@
                     <h3 class="font-bold text-lg mb-4">Image Key</h3>
                     <div class="flex flex-col space-y-4">
                         <div class="flex items-center">
-                            <img src="/static/images/available seats.png" alt="Description 1"
-                                class="w-12 h-12 object-cover mr-4">
-                            <p class="text-sm">Available Seats</p>
+                            <i class='fas fa-couch w-12 h-12 object-cover mr-4' style='font-size:34px;'></i>
+                            <p class="text-sm"> Available Seats</p>
                         </div>
                         <div class="flex items-center">
-                            <img src="/static/images/booked seats.png" alt="Description 2"
-                                class="w-12 h-12 object-cover mr-4">
+                            <i class='fas fa-couch w-12 h-12 object-cover mr-4' style='font-size:34px;color: red;'></i>
                             <p class="text-sm">Booked Seats</p>
                         </div>
                         <div class="flex items-center">
-                            <img src="/static/images/suggested seats.png" alt="Description 3"
-                                class="w-12 h-12 object-cover mr-4">
+                            <i class='fas fa-couch w-12 h-12 object-cover mr-4' style='font-size:34px;color: orange;'></i>
                             <p class="text-sm">Suggested Seats</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class='fas fa-couch w-12 h-12 object-cover mr-4' style='font-size:34px;color: blue'></i>
+                            <p class="text-sm">Selected Seat</p>
                         </div>
                     </div>
                 </div>
@@ -313,7 +322,8 @@
                         <div id="seat-{{ seat_number }}"
                             class="seat {% if seats_dict.get(seat_number, False) %}booked{% elif seat_number in recommendation %}recommended{% else %}available{% endif %}"
                             onclick="selectSeat({{ seat_number }})">
-                            {{ seat_number }}
+                            <i
+                                class="fas fa-couch {% if seats_dict.get(seat_number, False) %}booked{% elif seat_number in recommendation %}recommended{% else %}available{% endif %}"></i>
                         </div>
                         {% endfor %}
                     </div>
@@ -321,6 +331,7 @@
                 </div>
                 {% endfor %}
             </div>
+
 
         </div>
         <div class="footer">
