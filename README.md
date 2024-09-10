@@ -8,15 +8,15 @@ The system permits users to choose their originating and destination stations wh
 
 ## Technology Used
 
-## Frontend:
+# Frontend:
 HTML/CSS for visual seat selection interface.
 JavaScript for dynamic interaction and user inputs.
 
-## Backend:
+# Backend:
 Python with machine learning libraries (e.g., scikit-learn, numpy) for clustering and seat recommendation.
 Flask for server-side operations.
 
-## Machine Learning:
+# Machine Learning:
 SVM (Support Vector Machine): Used for station classification and seat availability prediction.
 Clustering Models: Recommends seats based on passenger preferences.
 Database:
