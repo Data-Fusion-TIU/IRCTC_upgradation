@@ -155,6 +155,7 @@ def confirm_booking():
    return render_template('payment.html')
 
 
+
 @app.route('/update_dataset', methods=['POST'])
 def update_dataset():
     # Retrieve data from the form
@@ -177,6 +178,13 @@ def update_dataset():
     row = ((seat_number - 1) // 6) + 1
   # Example logic, adjust as necessary
     column = ((seat_number - 1) % 6)+1  # Example logic, adjust as necessary
+            # Determine seat type based on the column
+    if column == 1 or column == 6:
+        seat_type = "Window"
+    elif column == 2 or column == 5:
+        seat_type = "Middle"
+    else:
+        seat_type = "Aisle"
 
 # Create a new row for the dataset as a DataFrame
     new_row = pd.DataFrame({
@@ -186,7 +194,7 @@ def update_dataset():
         'Seat Number': [seat_number],
         'Row': [row],
         'Column': [column],
-        'Seat Type': ['Regular'],  # Adjust as needed
+        'Seat Type': [seat_type],  # Adjust as needed
         'Seat Booked': True
     })
 
