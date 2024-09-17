@@ -46,10 +46,10 @@
       if (selectedTrain) {
         // Display the train details on the passenger page (you can customize this part)
         document.getElementById("train_name").textContent = `Train Name: ${selectedTrain.train_name} (${selectedTrain.train_number})`;
-        document.getElementById("from_sta").textContent = `${selectedTrain.from_sta} at ${selectedTrain.from_std}`;
-        document.getElementById("to_sta").textContent = `${selectedTrain.to_sta} at ${selectedTrain.to_std}`;
-        document.getElementById("distance").textContent = `Distance: ${selectedTrain.distance} km`;
-        document.getElementById("availableSeats").textContent = `Available Seats: ${selectedTrain.availableSeats}`;
+        document.getElementById("from_sta").textContent = `${selectedTrain.from} at ${selectedTrain.from_sta} of Day ${selectedTrain.from_day + 1}`;
+        document.getElementById("to_sta").textContent = `${selectedTrain.to} at ${selectedTrain.to_std} of Day ${selectedTrain.to_day + 1}`;
+        // document.getElementById("distance").textContent = `Distance: ${selectedTrain.distance} km`;
+        document.getElementById("availableSeats").textContent = `Available Seats: ${selectedTrain.availableSeats > 0 ? selectedTrain.availableSeats : `Not available`}`;
       } else {
         document.getElementById("train_info").textContent = "No train details found. Please go back and select a train.";
       }

@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import requests
 from Seat_booking import TrainBookingSystem
+from Train_Booking import TrainReservationSystem 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
@@ -108,7 +109,7 @@ def get_trains():
 
     headers = {
         'x-rapidapi-host': 'irctc1.p.rapidapi.com',
-        'x-rapidapi-key': 'efefa02b4fmshadb956299b0b3fap10dcdcjsnaa5f51d3dd29'
+        'x-rapidapi-key': 'ee040acf61msh53566421b683633p102e29jsnd186e4fc7f7d'
     }
     
     url = f'https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode={from_station}&toStationCode={to_station}&dateOfJourney={journey_date}'
@@ -215,6 +216,31 @@ def success():
 def signup():
     return render_template('signup.html')
 
+system = TrainReservationSystem('Gitanjali Express Route.csv')
+@app.route('/get_nearby_stations', methods=['POST'])
+def get_nearby_stations_route():
+    try:
+        data = request.get_json()  # Get the JSON data sent from the frontend
+        from_station = data.get('fromStation')
+        to_station = data.get('toStation')
+
+        # Fetch nearby stations (this can be from a database or external API)
+        available_stations = system.find_best_station(from_station, to_station)
+        # nearby_stations = [('RIG', 4, 175), ('CKP', 12, 101), ('TATA', 16, 163)]
+        print("From: ", from_station)
+        print("To: ", to_station)
+        print("Nearby Stations:", available_stations)  # Debugging purpose
+        return jsonify({
+            "nearbyStations": available_stations,
+            "status": True
+        }), 200
+
+    except Exception as e:
+        print(f"Error Occured: {str(e)}")
+        return jsonify({
+            "error": str(e),
+            "status": False
+        }), 500
 
 
 if __name__ == "__main__":

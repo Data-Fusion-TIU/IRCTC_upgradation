@@ -23,7 +23,5 @@ Booking ID,User Age,Preferred Age Group,Seat Number,Row,Column,Seat Type,Seat Bo
 22,19,18-25,8,2,2,Middle,True
 23,41,40-60,68,12,2,Middle,True
 24,25,18-25,6,1,6,Window,True
-25,28,25-40,35,6,5,Regular,True
-26,21,18-25,7,2,1,Regular,True
-27,45,40-60,82,14,4,Regular,True
-28,69,60+,91,16,1,Window,True
+25,21,18-25,4,1,4,Aisle,True
+26,21,18-25,7,2,1,Window,True
