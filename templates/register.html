@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRCTC Register</title>
+  <style>
+<style>
+  /* Body and HTML should take full height */
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    background-color: #f0f0f0; /* Optional: Background color */
+  }
+
+  /* General container styling */
+  .container {
+    display: flex;
+    max-width: 100%; /* Increase the width */
+    height: 100%; /* Decrease the height */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
+    background-color: white;
+    margin: 50px 50px;
+  }
+
+  /* right section with image */
+  .right-section {
+    background-color: #f7f7f7;
+    width: 60%; /* Make this section wider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative; /* To make the text link absolute */
+  }
+
+  .right-section .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .right-section .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Fill the container */
+  }
+
+  .already-account {
+  
+    bottom: 20px; /* Adjust the position as necessary */
+    left: 20px; /* Align with padding */
+    text-align: center;
+  }
+
+  .already-account p {
+    color: #555;
+    font-size: 16px;
+  }
+
+  .already-account a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .already-account a:hover {
+    text-decoration: underline;
+  }
+
+  /* Left section with form */
+  .left-section {
+    width: 40%; /* Make the form section wider */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #003366;
+    color: #c6c5c5;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .form-container h3 {
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Change color of Terms and Conditions text to antiquewhite */
+  .form-group label a {
+    color: antiquewhite;
+  }
+  .form-group label a:hover{
+    color: rgb(159, 36, 36);
+  }
+</style>
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left section with form -->
+    <div class="left-section">
+      <div class="form-container">
+        <h3>Register with your e-mail</h3>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="username">USERNAME (*)</label>
+            <input type="text" id="username" placeholder="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="email">EMAIL (*)</label>
+            <input type="email" id="email" placeholder="E-mail" required>
+          </div>
+          <div class="form-group">
+            <label for="password">PASSWORD (*)</label>
+            <input type="password" id="password" placeholder="Password" required>
+          </div>
+          <div class="form-group">
+            <label for="repeatPassword">REPEAT PASSWORD (*)</label>
+            <input type="password" id="repeatPassword" placeholder="Repeat Password" required>
+          </div>
+
+          <div class="form-group">
+            <input type="checkbox" id="emailConsent">
+            <label for="emailConsent">Please contact me via e-mail</label>
+          </div>
+
+          <div class="form-group">
+            <input type="checkbox" id="terms" required>
+            <label style="color: antiquewhite;">I have read and accept the <a href="#">Terms and Conditions</a></label>
+          </div>
+
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right section with image and login link -->
+    <div class="right-section">
+      <div class="logo">
+        <img src="/static/images/train background.jpg" alt="Train Background"> <!-- Image goes here -->
+      </div>
+      <!-- Login link below the image -->
+      <div class="already-account">
+        <p>Already have an account? <a href="signin">Login</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

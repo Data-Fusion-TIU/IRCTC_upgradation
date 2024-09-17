@@ -35,9 +35,8 @@
           <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
         </div>
         <div class="flex flex-1 justify-end gap-8">
-          
-          <button
-          onclick="goToHome()"
+
+          <button onclick="goToHome()"
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]">
             <span class="truncate">Return to Home</span>
           </button>
@@ -91,45 +90,45 @@
                 </svg>
               </div>
               <div class="flex flex-col justify-center">
-              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="passengerName"></p>
-              <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2" id="passengerDetails"></p>
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="passengerName"></p>
+                <p class="text-[#637588] text-sm font-normal leading-normal line-clamp-2" id="passengerDetails"></p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
-          <div class="flex items-center gap-4">
-            <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
-              data-icon="Chair" data-size="24px" data-weight="regular">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
-                viewBox="0 0 256 256">
-                <path
-                  d="M184,64H72A32,32,0,0,0,40,96v88a32,32,0,0,0,32,32h8v40a8,8,0,0,0,16,0V216h64v40a8,8,0,0,0,16,0V216h8a32,32,0,0,0,32-32V96A32,32,0,0,0,184,64ZM56,104V88H200v16Zm8,48v40a16,16,0,0,1-16,16H184a16,16,0,0,1-16,16H72V192Zm16-16a12,12,0,1,1-12-12A12,12,0,0,1,72,136ZM184,136a12,12,0,1,1-12-12A12,12,0,0,1,184,136Z">
-                </path>
-              </svg>
-            </div>
-            <div class="flex flex-col justify-center">
-              <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="seatDetails"></p>
+          <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4">
+              <div class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
+                data-icon="Chair" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                  viewBox="0 0 256 256">
+                  <path
+                    d="M184,64H72A32,32,0,0,0,40,96v88a32,32,0,0,0,32,32h8v40a8,8,0,0,0,16,0V216h64v40a8,8,0,0,0,16,0V216h8a32,32,0,0,0,32-32V96A32,32,0,0,0,184,64ZM56,104V88H200v16Zm8,48v40a16,16,0,0,1-16,16H184a16,16,0,0,1-16,16H72V192Zm16-16a12,12,0,1,1-12-12A12,12,0,0,1,72,136ZM184,136a12,12,0,1,1-12-12A12,12,0,0,1,184,136Z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex flex-col justify-center">
+                <p class="text-[#111418] text-base font-medium leading-normal line-clamp-1" id="seatDetails"></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 
   <script>
-function generatePNR() {
-  let pnr = '';
-  for (let i = 0; i < 10; i++) {
-    pnr += Math.floor(Math.random() * 10);
-  }
-  return pnr;
-}
-function getRandomCoach(coaches) {
-  const randomIndex = Math.floor(Math.random() * coaches.length);
-  return coaches[randomIndex];
-}
+    function generatePNR() {
+      let pnr = '';
+      for (let i = 0; i < 10; i++) {
+        pnr += Math.floor(Math.random() * 10);
+      }
+      return pnr;
+    }
+    function getRandomCoach(coaches) {
+      const randomIndex = Math.floor(Math.random() * coaches.length);
+      return coaches[randomIndex];
+    }
     // Retrieve train and passenger details from localStorage
     document.addEventListener("DOMContentLoaded", function () {
       const selectedTrain = JSON.parse(localStorage.getItem('selectedTrain'));
@@ -158,10 +157,10 @@ function getRandomCoach(coaches) {
       }
 
       // Display passenger details
-      
+
       // if (passengerName && passengerAge) {
-        document.getElementById("passengerName").innerText = passengerName;
-        document.getElementById("passengerDetails").innerText = `Age: ${passengerAge}`;
+      document.getElementById("passengerName").innerText = passengerName;
+      document.getElementById("passengerDetails").innerText = `Age: ${passengerAge}`;
       //}
 
       // Display seat details
@@ -170,8 +169,8 @@ function getRandomCoach(coaches) {
       }
     });
 
-    function goToHome(){
-      window.location.href ='/';
+    function goToHome() {
+      window.location.href = '/';
     }
   </script>
 

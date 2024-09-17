@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Register</title>
+  <style>
+    /* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  height: 60%;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Left section: form container */
+.left-section {
+  width: 40%;
+  padding: 20px;
+  background-color: #003366; /* Similar blue as IRCTC */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: white;
+}
+
+input[type="text"], input[type="password"] {
+  width: 80%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #e65c00;
+}
+
+p {
+  margin-top: 10px;
+  color: white;
+}
+
+a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+/* Right section: background image */
+.right-section {
+  width: 60%;
+  background: url('/static/images/train\ background.jpg') no-repeat center center;
+  background-size: cover; /* Fills the entire section */
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section: Form -->
+    <div class="left-section">
+      <div class="form-container">
+        <h2>Login to Your Account</h2>
+        <form action="/login" method="post">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter Username" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+          <button type="submit">Login</button>
+          <p>Don't have an account? <a href="signup">Register</a></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Section: Background Image -->
+    <div class="right-section"></div>
+  </div>
+</body>
+</html>

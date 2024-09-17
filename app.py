@@ -87,11 +87,6 @@ def home():
 def passenger():
     return render_template('passenger.html')
 
-@app.route('/signin')
-def signin():
-    return render_template('signin.html')
-
-
 @app.route('/booking')
 def booking():
     return render_template('booking.html')
@@ -212,10 +207,6 @@ def update_dataset():
 def success():
     return render_template('pay_and_confirm.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
 system = TrainReservationSystem('Gitanjali Express Route.csv')
 @app.route('/get_nearby_stations', methods=['POST'])
 def get_nearby_stations_route():
@@ -242,6 +233,13 @@ def get_nearby_stations_route():
             "status": False
         }), 500
 
+@app.route('/signin')
+def signin():
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('register.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
