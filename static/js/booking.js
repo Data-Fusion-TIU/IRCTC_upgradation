@@ -76,7 +76,6 @@ async function fetchTrainDetails() {
     document.getElementById("train_details").innerHTML = `<p>Error fetching train details: ${error.message}</p>`;
   }
 }
-
 // Function to display train details
 async function displayTrainDetails(trainsData) {
   const trainDetailsDiv = document.getElementById("train_details");
@@ -85,30 +84,30 @@ async function displayTrainDetails(trainsData) {
   trainDetailsDiv.innerHTML = '';
 
   if (!Array.isArray(trainsData) || trainsData.length === 0) {
-    trainDetailsDiv.innerHTML = `<p>No trains found.</p>`;
+    trainDetailsDiv.innerHTML = `<p class="text-center text-gray-500">No trains found.</p>`;
     return;
   }
 
   let trainsHtml = '';
   trainsData.forEach((train, index) => {
     trainsHtml += `
-      <div class="train-card bg-white shadow-md rounded-lg p-6 mb-4" data-train-index="${index}">
-        <h3 class="train-name text-lg font-bold text-gray-800 mb-2">${train.train_name} (${train.train_number})</h3>
-        <div class="train-info flex justify-between items-center border-t border-b border-gray-200 py-2 my-2">
+      <div class="train-card bg-white shadow-lg rounded-lg p-6 mb-6 border border-gray-200" data-train-index="${index}">
+        <h3 class="train-name text-2xl font-bold text-gray-800 mb-4">${train.train_name} (${train.train_number})</h3>
+        <div class="train-info grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-gray-300 pt-4 mt-4">
           <div class="info-item text-center">
             <p class="label text-sm font-medium text-gray-500">Departure:</p>
-            <p class="value text-lg font-semibold text-gray-700">Day:${train.from_day + 1} ${train.from_sta}</p>
+            <p class="value text-lg font-semibold text-gray-700">${train.from_day + 1} ${train.from_sta}</p>
           </div>
           <div class="info-item text-center">
             <p class="label text-sm font-medium text-gray-500">Arrival:</p>
-            <p class="value text-lg font-semibold text-gray-700">Day:${train.to_day + 1} ${train.to_sta}</p>
+            <p class="value text-lg font-semibold text-gray-700">${train.to_day + 1} ${train.to_sta}</p>
           </div>
           <div class="info-item text-center">
             <p class="label text-sm font-medium text-gray-500">Duration:</p>
             <p class="value text-lg font-semibold text-gray-700">${train.duration}</p>
           </div>
         </div>
-        <div class="station-info flex justify-between items-center py-2">
+        <div class="station-info grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           <div class="station text-center">
             <p class="label text-sm font-medium text-gray-500">From:</p>
             <p class="value text-lg font-semibold text-gray-700">${train.from_station_name}</p>
@@ -118,7 +117,7 @@ async function displayTrainDetails(trainsData) {
             <p class="value text-lg font-semibold text-gray-700">${train.to_station_name}</p>
           </div>
         </div>
-        <div class="additional-info flex justify-between items-center py-2">
+        <div class="additional-info grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           <div class="distance text-center">
             <p class="label text-sm font-medium text-gray-500">Distance:</p>
             <p class="value text-lg font-semibold text-gray-700">${train.distance} km</p>
@@ -128,17 +127,17 @@ async function displayTrainDetails(trainsData) {
             <p class="value text-lg font-semibold text-gray-700">${train.train_type}</p>
           </div>
         </div>
-        <div class="availability py-2 text-center">
+        <div class="availability text-center py-4">
           <p class="status ${train.availableSeats > 0 ? 'text-green-600' : 'text-red-600'}">
             ${train.availableSeats > 0 ? `Available: ${train.availableSeats} Seats` : 'Waitlisted'}
           </p>
           ${train.availableSeats > 0 ? '' : `
             <button id="showNearbyStationsBtn" onclick="fetchNearbyStations('${train.from}', '${train.to}', '${index}')"
-              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4">
               Show Nearby Stations
             </button>`}
         </div>
-        <button class="book-btn bg-blue-500 text-white py-2 px-4 rounded-lg w-full font-bold mt-4 hover:bg-blue-600"
+        <button class="book-btn bg-blue-600 text-white py-2 px-4 rounded-lg w-full font-bold mt-4 hover:bg-blue-700"
           data-train-index="${index}">
           Book Now
         </button>
@@ -164,6 +163,7 @@ async function displayTrainDetails(trainsData) {
     });
   });
 }
+
 
 // Function to fetch nearby stations and display them
 async function fetchNearbyStations(fromStation, toStation, trainIndex) {
