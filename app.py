@@ -10,18 +10,20 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
 db = SQLAlchemy(app)
 
 
-# Load the Excel file
-excel_file = 'train_booking_data.csv'  # Update this with the path to your Excel file
-df = pd.read_csv(excel_file)
+
 
 # Ensure your Excel columns match the expected names
 # You might need to adjust column names based on your Excel file
 def import_data():
+    
     with app.app_context():
-        # Clear existing data (optional)
-        db.drop_all()
-        db.create_all()
-
+        # Load the Excel file
+        excel_file = 'train_booking_data.csv'  # Update this with the path to your Excel file
+        df = pd.read_csv(excel_file)
+        # Clear existing seat data
+        Seat.query.delete()
+        db.session.commit()
+        
         # Iterate through the DataFrame and add rows to the database
         for _, row in df.iterrows():
             seat = Seat(
@@ -104,7 +106,7 @@ def get_trains():
 
     headers = {
         'x-rapidapi-host': 'irctc1.p.rapidapi.com',
-        'x-rapidapi-key': 'ee040acf61msh53566421b683633p102e29jsnd186e4fc7f7d'
+        'x-rapidapi-key': 'f9face5ff2mshd18a614949f1911p185075jsnc7b7dfeff4dc'
     }
     
     url = f'https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode={from_station}&toStationCode={to_station}&dateOfJourney={journey_date}'
@@ -129,7 +131,10 @@ def get_trains():
 def seat():
     # Retrieve all seat data
     seats = Seat.query.all()
+    print("Retrieved Seats:", seats)
     seats_dict = {seat.seat_number: (seat.user_age is not None) for seat in seats}
+
+    print("Seats Dictionary:", seats_dict)
 
     # Calculate total seats and rows
     total_seats = len(seats_dict)
@@ -218,8 +223,8 @@ def seat():
     else:
         if len(available_seats) >= num_passengers:
             # Handle multiple passengers case
-            recommended_seats = recommend_seats(num_passengers, available_seats)
-            
+            #recommended_seats = recommend_seats(num_passengers, available_seats)
+            recommended_seats = []
             if recommended_seats:
                 # Use the recommended seats if available
                 print("Passengers details:", passengers)
@@ -232,7 +237,7 @@ def seat():
                                        recommendation=recommended_seats)
             else:
                 # Fallback if no suitable recommendations are found
-                fallback_seats = available_seats[:num_passengers]
+                fallback_seats = []
                 print("Fallback seats:", fallback_seats)
                 
                 return render_template('seat.html', 
@@ -262,9 +267,6 @@ def update_dataset():
         passengers = data.get('passengers')     # Get the array of passengers
         seat_numbers = [int(seat.strip()) for seat in seat_numbers.split(',') if seat.strip()]
 
-        print(seat_numbers)
-        print(passengers)
-        print(len(seat_numbers), len(passengers))
         # Define CSV file path
         csv_file_path = 'train_booking_data.csv'
         print("csv file okay")
@@ -272,8 +274,8 @@ def update_dataset():
         df = pd.read_csv(csv_file_path)
 
         # Ensure the number of passengers matches the number of seats
-        #if len(seat_numbers) != len(passengers):
-        #    return "The number of passengers and seats do not match", 400
+        if len(seat_numbers) != len(passengers):
+            return "The number of passengers and seats do not match", 400
 
         # Loop through each passenger and their corresponding seat
         for passenger, seat_number in zip(passengers, seat_numbers):
