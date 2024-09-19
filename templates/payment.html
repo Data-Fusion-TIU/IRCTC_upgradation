@@ -1,4 +1,413 @@
-<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
+
+    <title>Payment Page</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+
+<body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+        style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-10 py-3">
+                <div class="flex items-center gap-4 text-[#111517]">
+                    <div class="size-4">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_6_535)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                                    fill="currentColor"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6_535">
+                                    <rect width="48" height="48" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h2 class="text-[#111517] text-lg font-bold leading-tight tracking-[-0.015em]">IRCTC</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <div class="flex items-center gap-9">
+                        <a class="text-[#111517] text-sm font-medium leading-normal" href="#">Book Ticket</a>
+                        <a class="text-[#111517] text-sm font-medium leading-normal" href="#">Cancel Ticket</a>
+                        <a class="text-[#111517] text-sm font-medium leading-normal" href="#">File TDR</a>
+                        <a class="text-[#111517] text-sm font-medium leading-normal" href="#">Track TDR</a>
+                        <a class="text-[#111517] text-sm font-medium leading-normal" href="#">PNR Status</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#2c90e2] text-white text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Current Booking</span>
+                        </button>
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111517] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Sign In</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div class="px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <div class="flex flex-wrap justify-between gap-3 p-4">
+                        <p class="text-[#111517] tracking-light text-[32px] font-bold leading-tight min-w-72">Fare
+                            Breakup</p>
+                    </div>
+
+                    <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
+                        <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dce1e5] py-5">
+                            <p class="text-[#647787] text-sm font-normal leading-normal">Base Fare</p>
+                            <p class="text-[#111517] text-sm font-normal leading-normal">₹500</p>
+                        </div>
+                        <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dce1e5] py-5">
+                            <p class="text-[#647787] text-sm font-normal leading-normal">Taxes</p>
+                            <p class="text-[#111517] text-sm font-normal leading-normal">₹50</p>
+                        </div>
+                        <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dce1e5] py-5">
+                            <p class="text-[#647787] text-sm font-normal leading-normal">Convenience Fee</p>
+                            <p class="text-[#111517] text-sm font-normal leading-normal">₹20</p>
+                        </div>
+                        <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dce1e5] py-5">
+                            <p class="text-black text-lg font-bold leading-normal">TOTAL</p>
+                            <p class="text-black text-lg font-bold leading-normal">₹570</p>
+
+                        </div>
+                    </div>
+
+                    <h2 class="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+                        Payment Options</h2>
+                    <div class="flex flex-wrap gap-3 p-4">
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            UPI
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            Debit Card
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            Credit Card
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            Net Banking
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            Wallets
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                        <label
+                            class="text-sm font-medium leading-normal flex items-center justify-center rounded-xl border border-[#dce1e5] px-4 h-11 text-[#111517] has-[:checked]:border-[3px] has-[:checked]:px-3.5 has-[:checked]:border-[#2c90e2] relative cursor-pointer">
+                            Cash Cards
+                            <input type="radio" class="invisible absolute"
+                                name="40cf98ce-4c5f-4d17-9a66-9d7f192da2ac" />
+                        </label>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#111517] text-base font-bold leading-tight">Pay using UPI</p>
+                                    <p class="text-[#647787] text-sm font-normal leading-normal">
+                                        Use your UPI ID to make a payment. Your bank's UPI app may be required to
+                                        complete the transaction.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f0f2f4] text-[#111517] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">Continue</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1"
+                                style='background-image: url("/static/images/payment_images/upi_img.png");'></div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#111517] text-base font-bold leading-tight">Pay using Debit Card</p>
+                                    <p class="text-[#647787] text-sm font-normal leading-normal">
+                                        You will be redirected to the bank site for payment. Please note that some banks
+                                        may require additional authentication.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f0f2f4] text-[#111517] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">Continue</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1"
+                                style='background-image: url("/static/images/payment_images/debit_cards.webp");'></div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#111517] text-base font-bold leading-tight">Pay using Credit Card
+                                    </p>
+                                    <p class="text-[#647787] text-sm font-normal leading-normal">
+                                        You will be redirected to the bank site for payment. Please note that some banks
+                                        may require additional authentication.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f0f2f4] text-[#111517] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">Continue</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1"
+                                style='background-image: url("/static/images/payment_images/credit_card.avif");'></div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#111517] text-base font-bold leading-tight">Pay using Net Banking
+                                    </p>
+                                    <p class="text-[#647787] text-sm font-normal leading-normal">
+                                        You will be redirected to the bank site for payment. Please note that some banks
+                                        may require additional authentication.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f0f2f4] text-[#111517] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">Continue</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1"
+                                style='background-image: url("/static/images/payment_images/online_banking.jpg");'>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+                            <div class="flex flex-[2_2_0px] flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <p class="text-[#111517] text-base font-bold leading-tight">Pay using Wallets</p>
+                                    <p class="text-[#647787] text-sm font-normal leading-normal">
+                                        You will be redirected to the wallet site for payment. Please note that some
+                                        wallets may require additional authentication.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f0f2f4] text-[#111517] text-sm font-medium leading-normal w-fit">
+                                    <span class="truncate">Continue</span>
+                                </button>
+                            </div>
+                            <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1"
+                                style='background-image: url("/static/images/payment_images/e_wallet.png");'></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between mt-16">
+                        <div class="flex flex-col justify-center">
+                            <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">IRCTC eWallet
+                            </p>
+                            <p class="text-[#647787] text-sm font-normal leading-normal line-clamp-2">Balance: ₹0</p>
+                        </div>
+                        <div class="shrink-0">
+                            <label
+                                class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#f0f2f4] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-[#2c90e2]">
+                                <div class="h-full w-[27px] rounded-full bg-white"
+                                    style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;">
+                                </div>
+                                <input type="checkbox" class="invisible absolute" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+                        <div class="flex flex-col justify-center">
+                            <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">IRCTC Loyalty
+                                Account</p>
+                            <p class="text-[#647787] text-sm font-normal leading-normal line-clamp-2">Balance: ₹0</p>
+                        </div>
+                        <div class="shrink-0">
+                            <label
+                                class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#f0f2f4] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-[#2c90e2]">
+                                <div class="h-full w-[27px] rounded-full bg-white"
+                                    style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;">
+                                </div>
+                                <input type="checkbox" class="invisible absolute" />
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="flex px-4 py-3">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-1 bg-[#f0f2f4] text-[#111517] text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Add New Card</span>
+              </button>
+            </div> -->
+
+                    <div class="flex px-4 py-3 space-x-4 mt-20 mb-8 justify-between">
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/upi.png" alt="UPI logo" class="h-12">
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/rupay.png" alt="Rupay logo" class="h-16">
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/visa.svg" alt="Visa logo" class="h-20">
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/gpay.png" alt="GPay logo" class="h-11">
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/paypal.svg" alt="PayPal logo" class="h-32">
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <img src="/static/images/logos/mastercard.svg" alt="Mastercard logo" class="h-28">
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="flex px-4 py-3 space-x-4">
+                <img src="./logos/upi.png" alt="UPI logo" class="h-12">
+                <img src="./logos/rupay.png" alt="Rupay logo" class="h-12">
+                <img src="./logos/visa.svg" alt="Visa logo" class="h-12">
+                <img src="./logos/gpay.png" alt="GPay logo" class="h-12">
+                <img src="./logos/paypal.svg" alt="PayPal logo" class="h-12">
+                <img src="./logos/mastercard.svg" alt="Mastercard logo" class="h-12">
+                <img src="./logos/american-express.svg" alt="American Express logo" class="h-12">
+            </div> -->
+
+
+                    <!-- <div class="flex px-4 py-3">
+                <img src="./logos/upi.png" alt="UPI logo">
+                <img src="./logos/rupay.png" alt="UPI logo">
+                <img src="./logos/visa.svg" alt="UPI logo">
+                <img src="./logos/gpay.png" alt="UPI logo">
+                <img src="./logos/paypal.svg" alt="UPI logo">
+                <img src="./logos/mastercard.svg" alt="UPI logo">
+                <img src="./logos/american-express.svg" alt="UPI logo">
+            </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert" id="alertMessage"></div>
+
+
+    <script>
+const bookButtons = document.querySelectorAll("button");
+
+// Add a click event listener to each button
+bookButtons.forEach(button => {
+  button.addEventListener("click", function () {
+    const passengerDetailsArray = JSON.parse(localStorage.getItem('passengerDetails')); // Assuming an array of passengers
+    const seatNumber = localStorage.getItem('selected_seat'); // Assume seat number is shared for all passengers
+
+    // Prepare the data to be sent to the server for all passengers
+    const data = {
+      seatNumber: seatNumber,
+      passengers: passengerDetailsArray // Send the entire array of passengers
+    };
+
+    // Send the data to the server
+    fetch('/update_dataset', {
+      method: 'POST', // Use POST method
+      headers: {
+        'Content-Type': 'application/json' // Set content type to JSON
+      },
+      body: JSON.stringify(data) // Convert the data to a JSON string
+    })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to success page if the request was successful
+        window.location.href = "success"; // Make sure 'success' is a valid route
+      } else {
+        // Handle errors
+        console.error('Error:', response.statusText);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+});
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,4 +478,4 @@
         }
     </script>
 </body>
-</html>
+</html> -->

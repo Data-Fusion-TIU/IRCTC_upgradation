@@ -127,81 +127,200 @@ def get_trains():
 
 @app.route('/seat', methods=['POST'])
 def seat():
+    # Retrieve all seat data
     seats = Seat.query.all()
     seats_dict = {seat.seat_number: (seat.user_age is not None) for seat in seats}
 
+    # Calculate total seats and rows
     total_seats = len(seats_dict)
     seats_per_row = 6  # 3 + 1 + 2 configuration
     total_rows = (total_seats + seats_per_row - 1) // seats_per_row
-    name = request.form['full_name']
-    phone = request.form['phone']
-    age = request.form['age']
-    gender = request.form['gender']
-    age_group = request.form['age_group']
+
+    # Extract passenger details from the form data
+    passengers = []
+    i = 1
+    while True:
+        full_name = request.form.get(f'passenger{i}_full_name')
+        if full_name is None:
+            break  # Exit loop if no more passenger data
+        
+        # Collect all details for the passenger
+        passenger = {
+            'full_name': full_name,
+            'age': request.form.get(f'passenger{i}_age'),
+            'phone': request.form.get(f'passenger{i}_phone'),
+            'gender': request.form.get(f'passenger{i}_gender'),
+            'age_group': request.form.get(f'passenger{i}_age_group'),
+        }
+        passengers.append(passenger)
+        i += 1
+
+    # Count the number of passengers
+    num_passengers = len(passengers)
+    
+    # Load booking data and initialize the booking system
     booking_data = pd.read_csv('train_booking_data.csv')
     booking_system = TrainBookingSystem(booking_data)
-    recommended_seats = booking_system.get_recommended_seats(age_group)
 
+    # Check available seats manually by iterating from 1 to 108
+    available_seats = []
+    for seat_number in range(1, 109):  # Assuming seat numbers range from 1 to 108
+        if seat_number not in seats_dict or not seats_dict[seat_number]:
+            available_seats.append(seat_number)
 
-    # Pass the form data to the confirmation page
-    return render_template('seat.html',  seats_dict=seats_dict, total_rows=total_rows, name=name, phone=phone, age=age, gender=gender, age_group=age_group, recommendation=recommended_seats)
+    # Print available seats for debugging
+    print(f"Available seats: {available_seats}")
+
+    def find_nearby_seats(num_seats, available_seats):
+        # Helper function to find contiguous blocks of seats
+        for i in range(len(available_seats) - num_seats + 1):
+            if all(seat not in seats_dict or not seats_dict[seat] for seat in available_seats[i:i + num_seats]):
+                return available_seats[i:i + num_seats]
+        return None
+
+    def recommend_seats(num_seats, available_seats):
+        # Main function to recommend seats
+        nearby_seats = find_nearby_seats(num_seats, available_seats)
+        if nearby_seats:
+            return nearby_seats
+        
+        # Alternative recommendations: Provide best options if contiguous seats are not available
+        best_options = []
+        for seat_number in available_seats:
+            if len(best_options) < num_seats:
+                best_options.append(seat_number)
+            else:
+                break
+        return best_options if len(best_options) == num_seats else None
+
+    if num_passengers == 1:
+        if available_seats:
+            # Handle single passenger case
+            passenger = passengers[0]
+            recommended_seats = booking_system.get_recommended_seats(passenger['age_group'])
+            print("Passenger details:", passenger)
+            print("Recommended seats:", recommended_seats)
+            
+            return render_template('seat.html', 
+                                   seats_dict=seats_dict, 
+                                   total_rows=total_rows, 
+                                   passengers=passengers, 
+                                   recommendation=recommended_seats)
+        else:
+            # No seats available
+            return render_template('seat.html', 
+                                   seats_dict=seats_dict, 
+                                   total_rows=total_rows, 
+                                   passengers=None, 
+                                   recommendation=None,
+                                   message="No seats available.")
+    
+    else:
+        if len(available_seats) >= num_passengers:
+            # Handle multiple passengers case
+            recommended_seats = recommend_seats(num_passengers, available_seats)
+            
+            if recommended_seats:
+                # Use the recommended seats if available
+                print("Passengers details:", passengers)
+                print("Recommended seats:", recommended_seats)
+                
+                return render_template('seat.html', 
+                                       seats_dict=seats_dict, 
+                                       total_rows=total_rows, 
+                                       passengers=passengers, 
+                                       recommendation=recommended_seats)
+            else:
+                # Fallback if no suitable recommendations are found
+                fallback_seats = available_seats[:num_passengers]
+                print("Fallback seats:", fallback_seats)
+                
+                return render_template('seat.html', 
+                                       seats_dict=seats_dict, 
+                                       total_rows=total_rows, 
+                                       passengers=passengers, 
+                                       recommendation=fallback_seats)
+        else:
+            # Not enough seats available
+            return render_template('seat.html', 
+                                   seats_dict=seats_dict, 
+                                   total_rows=total_rows, 
+                                   passengers=None, 
+                                   recommendation=None,
+                                   message="Not enough seats available.")
 
 @app.route('/pay_and_confirm')
 def confirm_booking():
    return render_template('payment.html')
 
-
-
 @app.route('/update_dataset', methods=['POST'])
 def update_dataset():
-    # Retrieve data from the form
-    seat_number = int(request.form['seat_number'])
-    user_age = request.form['user_age']
-    preferred_age_group = request.form['preferred_age_group']
-    # seat_booked = request.form['seat_booked']
+    try:
+        # Retrieve data from the JSON payload
+        data = request.get_json()
+        seat_numbers = data.get('seatNumber')  # Get the list of seat numbers
+        passengers = data.get('passengers')     # Get the array of passengers
+        seat_numbers = [int(seat.strip()) for seat in seat_numbers.split(',') if seat.strip()]
 
-    # Define CSV file path
-    csv_file_path = 'train_booking_data.csv'
+        print(seat_numbers)
+        print(passengers)
+        print(len(seat_numbers), len(passengers))
+        # Define CSV file path
+        csv_file_path = 'train_booking_data.csv'
+        print("csv file okay")
+        # Read the current dataset
+        df = pd.read_csv(csv_file_path)
 
-    # Load existing dataset
-    df = pd.read_csv(csv_file_path)
+        # Ensure the number of passengers matches the number of seats
+        #if len(seat_numbers) != len(passengers):
+        #    return "The number of passengers and seats do not match", 400
 
-    # Generate the next Booking ID
-    booking_id = df['Booking ID'].max() + 1 if not df.empty else 1
+        # Loop through each passenger and their corresponding seat
+        for passenger, seat_number in zip(passengers, seat_numbers):
+            user_age = passenger.get('age')
+            print(user_age)
+            preferred_age_group = passenger.get('age_group')
+            print(preferred_age_group)
 
-    # Extract row and column information (you may need additional logic for this)
-    # For demonstration, assuming row and column are derived from seat number
-    row = ((seat_number - 1) // 6) + 1
-  # Example logic, adjust as necessary
-    column = ((seat_number - 1) % 6)+1  # Example logic, adjust as necessary
+            # Generate the next Booking ID
+            booking_id = df['Booking ID'].max() + 1 if not df.empty else 1
+
+            # Extract row and column information based on the seat number
+            row = ((int(seat_number) - 1) // 6) + 1
+            column = ((int(seat_number) - 1) % 6) + 1
+
             # Determine seat type based on the column
-    if column == 1 or column == 6:
-        seat_type = "Window"
-    elif column == 2 or column == 5:
-        seat_type = "Middle"
-    else:
-        seat_type = "Aisle"
+            if column == 1 or column == 6:
+                seat_type = "Window"
+            elif column == 2 or column == 5:
+                seat_type = "Middle"
+            else:
+                seat_type = "Aisle"
 
-# Create a new row for the dataset as a DataFrame
-    new_row = pd.DataFrame({
-        'Booking ID': [booking_id],
-        'User Age': [user_age],
-        'Preferred Age Group': [preferred_age_group],
-        'Seat Number': [seat_number],
-        'Row': [row],
-        'Column': [column],
-        'Seat Type': [seat_type],  # Adjust as needed
-        'Seat Booked': True
-    })
+            # Create a new row for the dataset as a DataFrame
+            new_row = pd.DataFrame({
+                'Booking ID': [booking_id],
+                'User Age': [user_age],
+                'Preferred Age Group': [preferred_age_group],
+                'Seat Number': [seat_number],
+                'Row': [row],
+                'Column': [column],
+                'Seat Type': [seat_type],
+                'Seat Booked': [True]
+            })
 
+            # Append new row to the DataFrame
+            df = pd.concat([df, new_row], ignore_index=True)
 
-    # Append new row to the DataFrame
-    df = pd.concat([df, new_row], ignore_index=True)
+        # Save updated DataFrame back to CSV
+        df.to_csv(csv_file_path, index=False)
 
-    # Save updated DataFrame back to CSV
-    df.to_csv(csv_file_path, index=False)
+        return redirect(url_for('success'))  # Redirect to a success page or home page
 
-    return redirect(url_for('success'))  # Redirect to a success page or home page
+    except Exception as e:
+        # Handle any errors that occur during processing
+        print(f"An error occurred: {e}")
+        return redirect(url_for('signin'))  # Redirect to an error page or handle accordingly
 
 @app.route('/success')
 def success():
