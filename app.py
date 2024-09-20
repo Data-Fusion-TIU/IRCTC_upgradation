@@ -9,13 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///train_seats.db'
 db = SQLAlchemy(app)
 
-
-
-
-# Ensure your Excel columns match the expected names
-# You might need to adjust column names based on your Excel file
 def import_data():
-    
     with app.app_context():
         # Load the Excel file
         excel_file = 'train_booking_data.csv'  # Update this with the path to your Excel file
@@ -78,7 +72,6 @@ class Seat(db.Model):
     seat_type = db.Column(db.String(20), nullable=False)
     is_booked = db.Column(db.Boolean, default=False)  # New attribute to track booking status
 
-
 @app.route('/')
 def home():
     import_data()
@@ -99,7 +92,6 @@ def get_trains():
     from_station = data.get('from')
     to_station = data.get('to')
     journey_date = data.get('journeyDate')
-
 
     if not from_station or not to_station or not journey_date:
         return jsonify({'error': 'Missing from station, to station, or journey date'}), 400
