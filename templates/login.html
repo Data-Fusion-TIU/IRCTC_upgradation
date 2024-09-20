@@ -1,102 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login & Register</title>
   <style>
     /* Global reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
-}
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
 
-.container {
-  display: flex;
-  width: 80%;
-  height: 60%;
-  background-color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
+    .container {
+      display: flex;
+      width: 80%;
+      height: 60%;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
-/* Left section: form container */
-.left-section {
-  width: 40%;
-  padding: 20px;
-  background-color: #003366; /* Similar blue as IRCTC */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* Left section: form container */
+    .left-section {
+      width: 40%;
+      padding: 20px;
+      background-color: #003366;
+      /* Similar blue as IRCTC */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.form-container {
-  width: 100%;
-  text-align: center;
-}
+    .form-container {
+      width: 100%;
+      text-align: center;
+    }
 
-h2 {
-  color: #fff;
-  margin-bottom: 20px;
-}
+    h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
 
-label {
-  display: block;
-  margin-top: 10px;
-  color: white;
-}
+    label {
+      display: block;
+      margin-top: 10px;
+      color: white;
+    }
 
-input[type="text"], input[type="password"] {
-  width: 80%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+    input[type="text"],
+    input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-button {
-  padding: 10px 20px;
-  background-color: #ff6600;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+    button {
+      padding: 10px 20px;
+      background-color: #ff6600;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
 
-button:hover {
-  background-color: #e65c00;
-}
+    button:hover {
+      background-color: #e65c00;
+    }
 
-p {
-  margin-top: 10px;
-  color: white;
-}
+    p {
+      margin-top: 10px;
+      color: white;
+    }
 
-a {
-  color: #ff6600;
-  text-decoration: none;
-}
+    a {
+      color: #ff6600;
+      text-decoration: none;
+    }
 
-/* Right section: background image */
-.right-section {
-  width: 60%;
-  background: url('/static/images/train\ background.jpg') no-repeat center center;
-  background-size: cover; /* Fills the entire section */
-}
-
+    /* Right section: background image */
+    .right-section {
+      width: 60%;
+      background: url('/static/images/train\ background.jpg') no-repeat center center;
+      background-size: cover;
+      /* Fills the entire section */
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <!-- Left Section: Form -->
@@ -120,4 +124,5 @@ a {
     <div class="right-section"></div>
   </div>
 </body>
+
 </html>

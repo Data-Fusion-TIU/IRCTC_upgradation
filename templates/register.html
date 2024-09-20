@@ -1,136 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IRCTC Register</title>
   <style>
-  /* Body and HTML should take full height */
-  html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    background-color: #f0f0f0; /* Optional: Background color */
-  }
+    /* Body and HTML should take full height */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      /* Centers horizontally */
+      align-items: center;
+      /* Centers vertically */
+      background-color: #f0f0f0;
+      /* Optional: Background color */
+    }
 
-  /* General container styling */
-  .container {
-    display: flex;
-    max-width: 100%; /* Increase the width */
-    height: 100%; /* Decrease the height */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
-    background-color: white;
-    margin: 50px 50px;
-  }
+    /* General container styling */
+    .container {
+      display: flex;
+      max-width: 100%;
+      /* Increase the width */
+      height: 100%;
+      /* Decrease the height */
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* Optional: Adds shadow */
+      background-color: white;
+      margin: 50px 50px;
+    }
 
-  /* right section with image */
-  .right-section {
-    background-color: #f7f7f7;
-    width: 60%; /* Make this section wider */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative; /* To make the text link absolute */
-  }
+    /* right section with image */
+    .right-section {
+      background-color: #f7f7f7;
+      width: 60%;
+      /* Make this section wider */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      /* To make the text link absolute */
+    }
 
-  .right-section .logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+    .right-section .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
 
-  .right-section .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill; /* Fill the container */
-  }
+    .right-section .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      /* Fill the container */
+    }
 
-  .already-account {
-  
-    bottom: 20px; /* Adjust the position as necessary */
-    left: 20px; /* Align with padding */
-    text-align: center;
-  }
+    .already-account {
 
-  .already-account p {
-    color: #555;
-    font-size: 16px;
-  }
+      bottom: 20px;
+      /* Adjust the position as necessary */
+      left: 20px;
+      /* Align with padding */
+      text-align: center;
+    }
 
-  .already-account a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    .already-account p {
+      color: #555;
+      font-size: 16px;
+    }
 
-  .already-account a:hover {
-    text-decoration: underline;
-  }
+    .already-account a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  /* Left section with form */
-  .left-section {
-    width: 40%; /* Make the form section wider */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    background-color: #003366;
-    color: #c6c5c5;
-  }
+    .already-account a:hover {
+      text-decoration: underline;
+    }
 
-  .form-container {
-    width: 100%;
-    max-width: 500px;
-  }
+    /* Left section with form */
+    .left-section {
+      width: 40%;
+      /* Make the form section wider */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: #003366;
+      color: #c6c5c5;
+    }
 
-  .form-container h3 {
-    margin-bottom: 20px;
-  }
+    .form-container {
+      width: 100%;
+      max-width: 500px;
+    }
 
-  .form-group {
-    margin-bottom: 15px;
-  }
+    .form-container h3 {
+      margin-bottom: 20px;
+    }
 
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-  button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-  button:hover {
-    background-color: #0056b3;
-  }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
 
-  /* Change color of Terms and Conditions text to antiquewhite */
-  .form-group label a {
-    color: antiquewhite;
-  }
-  .form-group label a:hover{
-    color: rgb(159, 36, 36);
-  }
-</style>
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Change color of Terms and Conditions text to antiquewhite */
+    .form-group label a {
+      color: antiquewhite;
+    }
+
+    .form-group label a:hover {
+      color: rgb(159, 36, 36);
+    }
+  </style>
 
   </style>
 </head>
+
 <body>
   <div class="container">
     <!-- Left section with form -->
@@ -182,4 +198,5 @@
     </div>
   </div>
 </body>
+
 </html>
