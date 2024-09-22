@@ -98,7 +98,7 @@ def get_trains():
 
     headers = {
         'x-rapidapi-host': 'irctc1.p.rapidapi.com',
-        'x-rapidapi-key': 'f9face5ff2mshd18a614949f1911p185075jsnc7b7dfeff4dc'
+        'x-rapidapi-key': '4a80e42b9amshcc223d42cf19dbap15de52jsne3a72fabb1b8'
     }
     
     url = f'https://irctc1.p.rapidapi.com/api/v3/trainBetweenStations?fromStationCode={from_station}&toStationCode={to_station}&dateOfJourney={journey_date}'
